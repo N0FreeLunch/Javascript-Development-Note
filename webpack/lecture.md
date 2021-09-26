@@ -125,3 +125,18 @@ const config = {
 ```
 - `./src/index.js` 경로의 파일을 dist 폴더에 동일 이름의 파일으로 빌드한다는 의미
 - [entry](https://webpack.kr/concepts/#entry) 작성한 자바스크립트 파일이 위치하는 곳, [output](https://webpack.kr/concepts/#entry)은 빌드된 자바스크립트 파일이 위치하는 곳
+
+### watch 명령어로 개발하기
+```
+npm run watch
+```
+
+
+## 여러 파일 세팅하기
+```
+entry: {
+  "index" : "./src/index.js",
+  "test" : "./src/test.js"
+},
+```
+- key는 아웃풋 파일 이름, value는 작성한 자바스크립트 코드

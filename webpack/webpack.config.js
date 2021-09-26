@@ -9,9 +9,13 @@ const isProduction = process.env.NODE_ENV == "production";
 const stylesHandler = "style-loader";
 
 const config = {
-  entry: "./src/index.js",
+  entry: {
+    "index" : "./src/index.js",
+    "test" : "./src/test.js"
+  },
   output: {
-    path: path.resolve(__dirname, "dist"),
+    filename: '[name].js',
+    path: path.resolve(__dirname, 'dist'),
   },
   devServer: {
     open: true,
