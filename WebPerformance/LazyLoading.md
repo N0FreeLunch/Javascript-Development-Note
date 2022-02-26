@@ -7,12 +7,10 @@
 ## 프론트앤드에서의 지연 로딩
 - 프론트엔드에서 보통 lazy loading이라고 하면 브라우저가 초기 랜더링 될 때가 아니라, 랜더링 된 이후 브라우저의 이벤트 발생을 통해서 로딩을 한다는 의미이다.
 - 보통 프론트앤드에서 로딩이라고 하면 통신을 통해서 가져오는 데이터의 lazy loading을 의미한다. 물론 Lazy Loading의 개념에는 자바스크립트 자체의 갑작스런 리소스 소모를 줄이기 위해서 코드의 실행을 나중에 실행한다는 개념도 포함한다.
-- lazy loading의 대상은 이미지 뿐만 아니라, CSS 파일, 자바스크립트 통신으로 가져오는 모든 것이 대상이 될 수 있다.
+- lazy loading의 대상은 이미지 뿐만 아니라, CSS 파일, 자바스크립트 파일 등 파일 로딩 뿐만 아니라 자바스크립트 코드까지 포함될 수 있다.
 
 ## Lazy Loading을 사용하는 이유
-- 예를 들어 웹 페이지에 사진이 엄청 많이 로딩 된다고 하자. 
-- 페이지 상단에 보여 줄 이미지를 로딩을 하는데, 페이지 하단의 이미지를 로딩하기 위해서 페이지 상단의 이미지 로딩이 지연된다고 생각해 보자. 유저 경험(UX)적인 측면에서 불편함을 주게 된다.
-- 그래서 페이지의 이미지를 로딩할 때 페이지 상단의 이미지부터 로딩 될 수 있도록 하는 편이 좋고, 가능하다면 맨 윗 라인 부터 차례로 로딩되게 하는 것이 좋다.
+- 예를 들어 웹 페이지에 사진이 엄청 많이 로딩 된다고 하자. 페이지 상단에 보여 줄 이미지를 로딩을 하는데, 페이지 하단의 이미지를 로딩하기 위해서 페이지 상단의 이미지 로딩이 지연된다고 생각해 보자. 유저 경험(UX)적인 측면에서 불편함을 주게 된다. 그래서 페이지의 이미지를 로딩할 때 페이지 상단의 이미지부터 로딩 될 수 있도록 하는 편이 좋고, 가능하다면 맨 윗 라인 부터 차례로 로딩되게 하는 것이 좋다.
 
 ### HTTP와 HTTP2
 - 서버에서 클라이언트와 HTTP로 통신하는 프로토콜은 크게 2가지 방식이 있다. 하나는 HTTP이고 다른 하나는 HTTP2이다.
@@ -48,6 +46,7 @@
 
 ### 동적로딩은 필요할 때만 사용하자.
 - 정적 로딩을 해야 정적 분석 도구를 사용하기 쉽고 트리 쉐이킹의 이점을 얻기 쉽다. 동적 로딩을 사용하면 이런 이점을 누릴 수 없음 (참고로 정적 분석 도구로는 eslint가 유명함)
+- 트리쉐이킹은 동일 모듈의 경우, 모듈의 중복 로딩을 줄여주는 기능을 한다.
 
 ## Lazy Loading의 구현
 ### 이미지 및 iframe
@@ -58,7 +57,7 @@
 - 태그에 loading 어트리뷰트에 lazy 프로퍼티를 설정할 때 브라우저의 스크롤이 대상 태그에 가까이 갔을 때 브라우저가 알아서 lazy 로딩 처리를 해 준다. 곧 화면 밖에 있는 대상이 아직 읽히지 않았을 경우 이 태그를 적용한 대상은 레이지 로딩이 된다.
 - 지연 로딩의 경우 이미지가 이벤트 발생 시점에서 로딩되기 때문에 늦어지는 경우가 생길 수 있다. 따라서 레이지 로딩을 하는 순간에 잠시 이미지나 iframe이 보이지 않을 수도 있다. 로딩 여부를 브라우저로 체크하기 위해서는 [`htmlImageElement.complete;`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/complete) 구문을 사용하자. 
 - 브라우저의 지원 사항은 다음을 참고하자. 구버전의 브라우저의 경우 지원하지 않을 수 있다. (지원 여부 : https://caniuse.com/loading-lazy-attr) 이 경우 다음 자바스크립트 [lazy loading 폴리필](https://github.com/mfranzke/loading-attribute-polyfill)을 사용하여 구 버전 브라우저에 폴리필을 지원할 수 있다. 폴리필을 사용하는 것이 표준이므로 라이브러리 보다는 공식 폴리필을 사용하도록 하자.
-- 브라우저 지원 여부가 문제라면 자바스크립트를 사용해서 지연 로딩이 되도록 lazy 로딩 시점이 되었을 때 브라우저 이벤트 안에 스크립트로 이미지 태그를 만들어 집어 넣는 방식을 사용한다.
+- 브라우저 지원 여부가 문제라면 자바스크립트를 사용해서 지연 로딩이 되도록 lazy 로딩 시점이 되었을 때 브라우저 이벤트 안에 스크립트로 이미지 태그를 만들어 집어 넣는 방식을 사용할 수도 있다.
 
 ### CSS의 경우
 ```html
@@ -67,7 +66,7 @@
 <link href="print.css"    rel="stylesheet" media="print">
 ```
 - CSS의 경우 기본적으로 브라우저에서 지원하는 lazy loading은 CSS 파일을 불러오는 link 태그의 media 속성 부분에 정의할 수 있는 이벤트 종류이다.
-- `media="orientation:portrait"`의 경우 화면의 방향이 세로일 경우에만 적용되는 CSS 이며, `media="print"`의 경우는 화면 방향이 가로일 때만 적용되는 CSS이다.
+- `media="orientation:portrait"`의 경우 화면의 방향이 세로일 경우에만 적용되는 CSS 이며, `media="print"`의 경우는 브라우저에서 'ctrl + p' 등으로 프린터 옵션을 사용할 때 적용되는 CSS이다.
 - media 어트리뷰트에 지정할 수 있는 이벤트가 발생했을 때 실행되도록 동작시킬 수 있다.
 
 #### JS로 CSS로딩하기
@@ -95,15 +94,15 @@ var loadJs = function (jsPath) {
   return jsElement;
 }
 
-targetElmenet.appendChild(loadJs('JS  주소'));
+targetElmenet.appendChild(loadJs('js path or url'));
 ```
 - 특정 조건일 때 JS 파일을 로드할 때 사용한다. JS 태그를 브라우저의 노드에 넣는 시점에서 동적으로 로드된 JS 파일이 실행된다. 비동기적 스트립트 실행으로 스크립트가 로딩 되는 즉시 실행이 된다.
-
+- 태그를 자바스크립트로 동적으로 집어 넣으면 태그에 async 옵션을 넣은 것과 같은 효과를 가진다.
 ```
 <script src="JS path or url" async>
 </script>
 ```
-- async 태그를 스크립트에 쓰면 스크립트가 로딩 되는 즉시 실행이 되는데 이것과 동일한 역할을 JS 파일을 JS로 로딩할 때 적용된다.
+- async 태그를 스크립트에 쓰면 스크립트가 로딩 되는 즉시 실행이 되는데 이것과 동일한 역할을 js 파일을 js로 로딩할 때 적용된다.
 
 #### 다이나믹 import를 사용한다.
 ```js
@@ -114,35 +113,34 @@ targetElmenet.appendChild(loadJs('JS  주소'));
   }
 })();
 ```
-```
+```js
 (async () => {
   if (somethingIsTrue) {
     const { default: myDefault, foo, bar } = await import('/modules/my-module.js');
   }
 })();
 ```
-```
+```js
 import('/modules/my-module.js')
   .then((module) => {
     // Do something with the module.
   });
 ```
-```
+```js
 let module = await import('/modules/my-module.js');
 ```
+- 다이나믹 import는 promise 타입을 사용하기 때문에 promise에 대한 지식이 필요하다.
 - dynamic import에 대한 지원은 오래된 브라우저에서 동작하지 않을 수 있으므로 확인이 필요하다. (https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Statements/import)
 
 ### 웹펙의 경우
 - 웹펙 설정의 [dynamic-entry](https://webpack.kr/configuration/entry-context#dynamic-entry) 부분을 참고한다.
-```
+```js
 entry: () => new Promise((resolve) => resolve(['./demo', './demo2'])),
 ```
-
-```
+```js
 entry: () => './demo',
 ```
-
-```
+```js
 module.exports = {
   entry() {
     return fetchPathsFromSomeExternalSource(); // ['src/main-layout.js', 'src/admin-layout.js']와 같이 해석할 promise를 반환합니다.
