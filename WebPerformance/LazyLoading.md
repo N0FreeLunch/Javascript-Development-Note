@@ -1,5 +1,5 @@
 # Lazy Loading
-- 지연 로딩은 여러 개념으로 사용된다.
+- 지연 로딩은 여러 개념으로 사용된다. 그 중에서도 웹 프로그래밍에서 지연 로딩은 서버의 ORM에서의 지연로딩과 프론트앤드의 HTML에서 호출하는 여러 파일에 대한 로딩을 가리킨다.
 
 ## 백앤드에서의 지연 로딩
 - 주로 백앤드에서는 ORM을 사용할 때 eager loading과 lazy loading을 구분해서 쿼리의 결과 리스트를 가져올 때, 리스트의 일부 또는 단일 결과값에 연관된 데이터에 대한 쿼리를 한 번 더 날리기 위해 lazy loading을 사용한다. lazy loading은 쿼리의 결과 리스트 하나하나에 대해 쿼리를 날리는 방식이고 eager loading은 미리 결과 리스트에 대한 연관 데이터를 모두 한꺼번에 가져오는 방식이다. 가져와야 할 결과 리스트의 크기가 크다면 eager loading 보다는 lazy loading을 사용하는 것이 DB의 리소스에 부담을 적게 주고 백앤드 애플리케이션의 메모리 절감을 할 수 있는 전략이다. 물론 데이터의 크기가 작다면 한꺼번에 빠르게 데이터를 가져올 수 있고 여러번 나눠서 쿼리를 날리는 것 보다 단일 또는 소수의 쿼리로 데이터를 가져오는 eager loading이 더 나을 때도 있다.
@@ -62,11 +62,25 @@
 - 브라우저 지원 여부가 문제라면 자바스크립트를 사용해서 지연 로딩이 되도록 lazy 로딩 시점이 되었을 때 브라우저 이벤트 안에 스크립트로 이미지 태그를 만들어 집어 넣는 방식을 사용한다.
 
 ### CSS의 경우
-```
+```html
 <link href="style.css"    rel="stylesheet" media="all">
 <link href="portrait.css" rel="stylesheet" media="orientation:portrait">
 <link href="print.css"    rel="stylesheet" media="print">
 ```
+- CSS의 경우 기본적으로 브라우저에서 지원하는 lazy loading은 CSS 파일을 불러오는 link 태그의 media 속성 부분에 정의할 수 있는 이벤트 종류이다.
+- `media="orientation:portrait"`의 경우 화면의 방향이 세로일 경우에만 적용되는 CSS 이며, `media="print"`의 경우는 화면 방향이 가로일 때만 적용되는 CSS이다.
+- media 어트리뷰트에 지정할 수 있는 이벤트가 발생했을 때 실행되도록 동작시킬 수 있다.
+
+#### JS로 CSS로딩하기
+```js
+var dynamicLoadCss = function (cssPath) {
+  var cssElement = document.createElement('link');
+  cssElement.setAttribute('href', cssPath);
+  cssElement.setAttribute('rel', 'stylesheet');
+  document.head.appendChild(cssElement);
+})
+```
+- 자바스크립트로 태그를 로딩하면 자바스크립트로 태그를 브라우저에 로딩한 시점에서 내부의 태그의 실행이 결정된다.
 
 ### JS의 경우
 #### 엔트리 포인트 분리 (Entry point splitting)
@@ -74,7 +88,7 @@
 - 하지만 이 경우 초기 로딩에서 필요 없는 자바스크립트 파일도 받기 때문에 초기 로딩 속도가 굉장히 느려지는 문제가 발생하게 된다. 따라서 페이지 별로 필요한 자바스크립트 파일을 분리하는 방식을 사용하도록 한다.
 
 #### 다이나믹 import를 사용한다.
-```
+```js
 (async () => {
   if (somethingIsTrue) {
     // import module for side effects
@@ -82,13 +96,48 @@
   }
 })();
 ```
+```
+(async () => {
+  if (somethingIsTrue) {
+    const { default: myDefault, foo, bar } = await import('/modules/my-module.js');
+  }
+})();
+```
+```
+import('/modules/my-module.js')
+  .then((module) => {
+    // Do something with the module.
+  });
+```
+```
+let module = await import('/modules/my-module.js');
+```
+- dynamic import 에 대한 지원은 오래된 브라우저에서 동작하지 않을 수 있으므로 확인 요망 (https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Statements/import)
 
 ### 웹펙의 경우
+- 웹펙 설정의 [dynamic-entry](https://webpack.kr/configuration/entry-context#dynamic-entry) 부분을 참고한다.
+```
+entry: () => new Promise((resolve) => resolve(['./demo', './demo2'])),
+```
 
+```
+entry: () => './demo',
+```
+
+```
+module.exports = {
+  entry() {
+    return fetchPathsFromSomeExternalSource(); // ['src/main-layout.js', 'src/admin-layout.js']와 같이 해석할 promise를 반환합니다.
+  },
+};
+```
+
+### react, angular, vue
+- 각각 프레임워크에서 권장하는 방식이 있다. 이를 참고한다.
 
 ## Reference
 - https://developer.mozilla.org/en-US/docs/Web/Performance/Lazy_loading
 - https://webpack.js.org/guides/lazy-loading/
 - https://webpack.kr/guides/lazy-loading/
 - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import
-- https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import
+- https://webpack.kr/configuration/entry-context#dynamic-entry
