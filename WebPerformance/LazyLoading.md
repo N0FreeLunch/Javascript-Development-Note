@@ -97,7 +97,13 @@ var loadJs = function (jsPath) {
 
 targetElmenet.appendChild(loadJs('JS  주소'));
 ```
-- 특정 조건일 때 JS 파일을 로드할 때 사용한다. JS 태그를 브라우저의 노드에 넣는 시점에서 동적으로 로드된 JS 파일이 실행된다.
+- 특정 조건일 때 JS 파일을 로드할 때 사용한다. JS 태그를 브라우저의 노드에 넣는 시점에서 동적으로 로드된 JS 파일이 실행된다. 비동기적 스트립트 실행으로 스크립트가 로딩 되는 즉시 실행이 된다.
+
+```
+<script src="JS path or url" async>
+</script>
+```
+- async 태그를 스크립트에 쓰면 스크립트가 로딩 되는 즉시 실행이 되는데 이것과 동일한 기능을 함
 
 #### 다이나믹 import를 사용한다.
 ```js
@@ -153,3 +159,4 @@ module.exports = {
 - https://webpack.kr/guides/lazy-loading/
 - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import
 - https://webpack.kr/configuration/entry-context#dynamic-entry
+- https://developer.mozilla.org/en-US/docs/Web/API/HTMLScriptElement#dynamically_importing_scripts
