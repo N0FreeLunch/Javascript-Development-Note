@@ -21,8 +21,7 @@
 - HTTP2 방식의 경우는 통신이 비동기 방식이다. 서버와 클라이언트 간의 커넥션이 하나라도 여러 요청이 서버로 보내졌을 때 서버는 동시에 이 요청들을 처리한다. 페이지 아래쪽의 이미지가 먼저 로딩이 된다고 하더라도 페이지 위쪽 이미지도 동시에 로딩이 될 수 있기 때문에 특별한 문제가 되지 않는다. 하지만 서버의 트레픽은 제한되어 있는 경우가 있고, 트레픽 제한이 있는 서버에서는 HTTP2 방식을 쓴다고 하더라도 리스폰스의 지연이 생기는 경우가 있다. 이런 트레픽 제한의 문제를 해결하기 위해 CDN 서버를 사용할 때도 있다.
 - 또한 서버의 페이지에 로딩되는 추가 파일들 이미지, CSS, JS 파일이 Nginx, Apache 등에서 static 컨텐츠 설정이 되어 있지 않다면 웹 애플리케이션(WAS)에서 데이터를 보내줘야 하기 때문에 지연이 일어날 수 있다. WAS가 동시에 처리할 수 있는 양은 제한 되어 있고 이 제한 때문에 다수의 사용자가 한 꺼번에 많은 컨텐츠를 요청하면 WAS에 무리가 갈 수 있다. 물론 비동기 서버인 NodeJS 같은 경우에는 빠르게 처리할 수도 있을 것 같다.
 
-## 정적로딩과 동적로딩
-### 바인딩
+## 바인딩
 - 바인딩 된다는 말은 마치 원본 문맥에 들어 있는 것 처럼 집어 넣는다는 의미이다.
 - HTML 문서를 브라우저에서 실행할 때 바인딩 된다는 말은 말 그대로 HTML 문서를 실행할 때 마치 HTML 문서에 존재하는 텍스트인 것처럼 실행하여 로딩 된다는 것이며
 - JS 코드를 실행할 때 바인딩 된다는 말은 원본 JS 파일에 들어 있는 코드를 실행하는 것 처럼 외부에서 코드를 받아와서 실행한다는 의미이다.
@@ -112,7 +111,7 @@ import('/modules/my-module.js')
 ```
 let module = await import('/modules/my-module.js');
 ```
-- dynamic import 에 대한 지원은 오래된 브라우저에서 동작하지 않을 수 있으므로 확인 요망 (https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Statements/import)
+- dynamic import 에 대한 지원은 오래된 브라우저에서 동작하지 않을 수 있으므로 확인이 필요하다. (https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Statements/import)
 
 ### 웹펙의 경우
 - 웹펙 설정의 [dynamic-entry](https://webpack.kr/configuration/entry-context#dynamic-entry) 부분을 참고한다.
