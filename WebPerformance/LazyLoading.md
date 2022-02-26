@@ -86,6 +86,19 @@ var dynamicLoadCss = function (cssPath) {
 - 페이지 마다 로딩되는 것을 방지하고, 한번 로딩된 자바스크립트나 CSS 파일을 캐싱하여 여러 페이지에서 사용하기 위해 여러 페이지에서 쓰이는 자바스크립트 또는 CSS 파일을 하나의 파일에 정의하는 방식으로 사용할 수도 있다. 이 경우 페이지 별로 파일을 다운로드 받지 않고 캐싱된 것을 이용하기 때문에 웹 사이트의 어떤 페이지에서의 초기 로딩 속도는 늦지만 다른 페이지의 로딩속도는 향상되는 효과를 얻을 수 있다.
 - 하지만 이 경우 초기 로딩에서 필요 없는 자바스크립트 파일도 받기 때문에 초기 로딩 속도가 굉장히 느려지는 문제가 발생하게 된다. 따라서 페이지 별로 필요한 자바스크립트 파일을 분리하는 방식을 사용하도록 한다.
 
+#### 스크립트 동적 로딩
+- 자바스크립트 태그를 동적으로 로딩하는 방식이다.
+```js
+var loadJs = function (jsPath) {
+  var jsElement = document.createElement('script');
+  jsElement.setAttrubute('src', jsPath);
+  return jsElement;
+}
+
+targetElmenet.appendChild(loadJs('JS  주소'));
+```
+- 특정 조건일 때 JS 파일을 로드할 때 사용한다. JS 태그를 브라우저의 노드에 넣는 시점에서 동적으로 로드된 JS 파일이 실행된다.
+
 #### 다이나믹 import를 사용한다.
 ```js
 (async () => {
@@ -111,7 +124,7 @@ import('/modules/my-module.js')
 ```
 let module = await import('/modules/my-module.js');
 ```
-- dynamic import 에 대한 지원은 오래된 브라우저에서 동작하지 않을 수 있으므로 확인이 필요하다. (https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Statements/import)
+- dynamic import에 대한 지원은 오래된 브라우저에서 동작하지 않을 수 있으므로 확인이 필요하다. (https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Statements/import)
 
 ### 웹펙의 경우
 - 웹펙 설정의 [dynamic-entry](https://webpack.kr/configuration/entry-context#dynamic-entry) 부분을 참고한다.
