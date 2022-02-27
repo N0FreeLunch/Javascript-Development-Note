@@ -46,7 +46,7 @@
 
 ### 동적로딩은 필요할 때만 사용하자.
 - 정적 로딩을 해야 정적 분석 도구를 사용하기 쉽고 트리 쉐이킹의 이점을 얻기 쉽다. 동적 로딩을 사용하면 이런 이점을 누릴 수 없음 (참고로 정적 분석 도구로는 eslint가 유명함)
-- 트리쉐이킹은 동일 모듈을 사용하는 서로 다른 모듈을 로딩하는 경우, 로딩하는 서로 다른 두 모듈에서 공통으로 사용하고 있는 모듈의 중복을 줄여주는 기능을 한다.
+- 트리쉐이킹은 동일 모듈을 사용하는 서로 다른 모듈을 로딩하는 경우, 로딩하는 서로 다른 두 모듈에서 공통으로 사용하고 있는 모듈의 중복 로딩을 줄여주는 기능을 한다.
 
 ## Lazy Loading의 구현
 ### 이미지 및 iframe
@@ -75,6 +75,7 @@ var dynamicLoadCss = function (cssPath) {
   var cssElement = document.createElement('link');
   cssElement.setAttribute('href', cssPath);
   cssElement.setAttribute('rel', 'stylesheet');
+  cssElement.setAttribute('type', "text/css");
   document.head.appendChild(cssElement);
 })
 ```
@@ -98,12 +99,14 @@ var loadJs = function (jsPath) {
 targetElmenet.appendChild(loadJs('js path or url'));
 ```
 - 특정 조건일 때 JS 파일을 로드할 때 사용한다. JS 태그를 브라우저의 노드에 넣는 시점에서 동적으로 로드된 JS 파일이 실행된다. 이는 비동기적 스트립트 실행으로 스크립트가 로딩 되는 즉시 실행이 된다.
+- 단, 이때 innerHTML 또는 outerHTML를 사용하면 스크립트가 실행되지 않는다.
 - 태그를 자바스크립트로 동적으로 집어 넣으면 태그에 async 옵션을 넣은 것과 같은 효과를 가진다.
 ```
 <script src="JS path or url" async>
 </script>
 ```
 - async 태그를 스크립트에 쓰면 스크립트가 로딩 되는 즉시 실행이 되는데 이것과 동일한 역할을 스크립트 태그를 js로 만들어 브라우저에 넣을 때 적용된다.
+- 브라우저는 HTML 문서를 먼저 파싱을 한 뒤, 파싱된 형태의 코드를 순차적으로 읽는 방식으로 실행한다. async 속성은 HTML 문서가 모두 브라우저에 의해 파싱 되고 나서 스크립트를 실행하는 것이 아닌, 파싱 되는 시점에서 코드를 실행한다.
 
 #### 다이나믹 import를 사용한다.
 ```js
@@ -131,6 +134,7 @@ import('/modules/my-module.js')
 let module = await import('/modules/my-module.js');
 ```
 - 다이나믹 import는 promise 타입을 사용하기 때문에 promise에 대한 지식이 필요하다.
+- import 문법을 사용하기 위해서는 로드하는 자바스크립트 파일이 `module` 문법을 사용한 모듈 형태의 구성이 되어야 한다.
 - dynamic import에 대한 지원은 오래된 브라우저에서 동작하지 않을 수 있으므로 확인이 필요하다. (https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Statements/import)
 
 ### 웹펙의 경우
@@ -148,9 +152,13 @@ module.exports = {
   },
 };
 ```
+- 웹펙의 경우도 내부적으로 import 구문을 사용하기 때문에 구형 브라우저에서 사용하기 위해서는 import 폴리필을 웹펙에 설치해 줘야 한다. import 폴리필은 브라우저에서 직접 지원하는 것은 없는 것 같고, webpack을 통해서 실행할 수 있는 패키지는 있는 것 같다.
 
 ### react, angular, vue
 - 각각 프레임워크에서 권장하는 방식이 있다.
+- react : https://reactjs.org/docs/code-splitting.html
+- vue : https://vuedose.tips/dynamic-imports-in-vue-js-for-better-performance
+- angular : https://angular.io/guide/router#milestone-6-asynchronous-routing or https://medium.com/@var_bin/angularjs-webpack-lazyload-bb7977f390dd
 
 ## Reference
 - https://developer.mozilla.org/en-US/docs/Web/Performance/Lazy_loading
