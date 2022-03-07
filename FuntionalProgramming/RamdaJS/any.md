@@ -1,5 +1,5 @@
 ## any
-- R.any()
+- `R.any(predicate, list)`
 
 ## 설명
 - `R.any(술어함수)(리스트);`
