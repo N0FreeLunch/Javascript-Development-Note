@@ -8,6 +8,7 @@ Idx = String | Int | Symbol
 ```
 - `Idx → {s: a} → (a | Undefined)` 구성으로 봐야 한다.
 - 첫 번째 인자로는 인덱스(Idx)를 받는다. `{s: a}`에서 지정한 Idx에 해당하는 s 프로퍼티를 선택하여 값 a를 반환한다. 하지만 프로퍼티가 없다면 `undefined`를 반환한다.
+- `Idx = String | Int | Symbol`는 Idx가 어떤 것으로 구성되어 있는지에 관한 것이다. 문자열 또는 정수 또는 Symbol 타입이 Idx 타입이다.
 
 ## 설명
 - 첫 번째 인자로는 오브젝트에서 뽑을 프로퍼티명을 지정한다.
