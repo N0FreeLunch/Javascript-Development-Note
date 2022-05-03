@@ -1,5 +1,15 @@
 ## assoc
-- assoc
+- R.assoc()
+> Makes a shallow clone of an object
+- 오브젝트를 복사하며 얕은 복사를 한다.
+> setting or overriding the specified property with the given value.
+- 프로퍼티와 값을 새롭게 세팅 하거나 기존 프로퍼티의 값을 오버라이딩 한다.
+> Note that this copies and flattens prototype properties onto the new object as well.
+- 반환되는 새 오브젝트에는 프로토타입 프로퍼티도 복사 되고 병합(flattens)된다.
+> All non-primitive properties are copied by reference.
+- 프리미티브 타입이 아닌 값을 가지는 프로퍼티는 참조 방식으로 복사된다. (주소가 복사되고 실제 할당된 값이 복사되지 않는다.)
+
+
 
 ## 표현
 ```
@@ -13,6 +23,9 @@ Idx = String | Int
 - `Idx = String | Int` Idx로 가능한 타입은 문자열과 정수타입이다.
 
 ## 설명
+```
+R.assoc(프로퍼티명, '프로퍼티 값', 오브젝트)
+```
 - 첫 번째 인자로 프로퍼티명을 넣는다.
 - 두 번째 인자로 프로퍼티 값을 넣는다.
 - 세 번째 인자로 첫 번째 인자와 두 번째 인자로 받은 프로퍼티 이름과 값을 넣을 오브젝트를 할당한다.
