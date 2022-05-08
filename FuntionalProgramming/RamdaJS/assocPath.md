@@ -34,3 +34,6 @@ R.assocPath(['a', 'b', 'c'], 42, {a: {b: {c: 0}}}); //=> {a: {b: {c: 42}}}
 // Any missing or non-object keys in path will be overridden
 R.assocPath(['a', 'b', 'c'], 42, {a: 5}); //=> {a: {b: {c: 42}}}
 ```
+
+## Reference
+- https://ramdajs.com/docs/#assocPath
