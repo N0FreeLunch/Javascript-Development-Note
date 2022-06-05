@@ -1,5 +1,11 @@
 ## binary
 - R.binary()
+> Wraps a function of any arity (including nullary) 
+- (널을 받는 인수를 포함한) 임의의 인수를 가지는 어떤 함수를 감싼 새로운 함수를 만든다.
+> in a function that accepts exactly 2 parameters. 
+- 새 함수는 해당 함수에서 딱 두 개의 파라메터만을 함수 내부로 전달한다.
+> Any extraneous parameters will not be passed to the supplied function.
+> 전달되는 두 개의 함수 이외의 나머지 파라메터는 함수 내부로 전달 되지 못한다.
 
 ## 표현
 ```
@@ -8,6 +14,10 @@
 - `(a → b → c → … → z)`는 인자로 `a` `b` `c` ... `y` 를 받는 함수가 있다고 하자. 임의의 수의 인자를 받는 함수이다.
 - `(a → b → c → … → z)`를 `R.binary()` 함수 안에 넣으면 인자가 2개만 받는 함수가 된다.
 - 따라서 `((a, b) → z)`가 되는 것.
+
+## 설명
+- 여러 인자를 가지는 임의의 함수를 `R.binary()` 함수에 넣으면 인자를 딱 2개만 받는 함수로 변환한 함수를 반환한다.
+- 인자의 갯수를 여럿 가지면서 인자마다 각각의 독특한 기능을 하는 것이 아니라 인자의 갯수가 많아도 적어도 동일한 방식의 연산을 하는 함수의 경우에 인자의 갯수를 두 개만 지정할 때 사용한다.
 
 ## 예제
 ```
