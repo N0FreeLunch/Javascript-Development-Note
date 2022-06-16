@@ -23,8 +23,8 @@ R.lt('z', 'a'); //=> false
 - `R.lt(2, 1)` 2보다 1이 작지 않으므로 false
 - `R.lt(2, 2)` 2보다 2가 작지 않으므로 false
 - `R.lt(2, 3)` 2보다 3이 작으므로 true
-- `R.lt('a', 'z')` 
-- `R.lt('z', 'a')`
+- `R.lt('a', 'z')` 문자열 a 보다 문자열 z가 가진 순서가 작으므로 true
+- `R.lt('z', 'a')` 문자열 a 보다 문자열 z가 가진 순서가 크므로 false
 
 ## Reference
 - https://ramdajs.com/docs/#lt
