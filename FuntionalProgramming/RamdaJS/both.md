@@ -1,7 +1,7 @@
 ## both
 - R.both
 > A function which calls the two provided functions and returns the && of the results.
-- 
+- 이 함수는 두 개의 술어함수를 받아 호출하고 결과 값을 && 연산한다.
 > It returns the result of the first function if it is false-y and the result of the second function otherwise.
 - 
 > Note that this is short-circuited, meaning that the second function will not be invoked if the first returns a false-y value.
@@ -14,11 +14,15 @@
 ```
 (*… → Boolean) → (*… → Boolean) → (*… → Boolean)
 ```
-
+- `(*… → Boolean) → ` 술어 함수를 하나 받는다.
+- `→ (*… → Boolean) →` 술어 함수를 또 하나 받는다.
+- `→ (*… → Boolean)` 두 술어 함수를 평가한 결과를 and 연산한 결과를 받는다.
+- `→ (*… → Boolean)`에서 받은 인자는 `*…`는 인자로 받은 술어함수 각각이 받은 인자와 동일한 타입 및 갯수이어야 한다.
 
 ## 설명
 - `R.both` 함수는 두 개의 술어함수를 받는다.
 - 두 개의 술어함수를 받고 반환된 함수는 하나의 인자를 받는데 미리 받은 두 개의 술어함수에 인자로 할당했을 때 둘 중 하나라도 거짓이라면 거짓을 둘 다 참이라면 참은 반환하는 함수이다.
+- 여러개의 술어 함수 모두를 만족하는지 한 번에 체크하는 용도로 사용된다.
 
 
 ## 예제
