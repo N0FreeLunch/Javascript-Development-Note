@@ -80,6 +80,24 @@ person.farewell = function() { alert("Bye everybody!"); }
 ```
 - 위의 코드를 실행하면 객체 내부에 새로운 멤버가 생긴다.
 
+## 객체 사용의 예
+```
+myString.split(',');
+```
+- `myString`은 문자열 객체이다. 문자열 객체의 문자열 클래스가 가지고 있는 `split`라는 메소드를 사용한 것이다.
+- 자바스크립트에서 문자열 타입을 사용하는 것은 내부적으로 자바스크립트 언어에 내장되어 있는 문자열 클래스를 인스턴스화하여 사용하는 것이다. 따라서 문자열 타입은 문자열 클래스가 보유한 메소드를 사용할 수 있다.
+
+```
+var myDiv = document.createElement('div');
+var myVideo = document.querySelector('video');
+```
+- `document` 객체의 클래스에 정의되어 있는 `createElement` 메소드와 `querySelector` 메소드를 사용한 것이다.
+- 브라우저 API로 제공되는 document 객체의 메소드에 직접 접근하는 방식이다.
+- document 객체는 웹 페이지가 로딩될 때 브라우저에서 자동으로 생성하는 객체이다.
+
+
+### 주의할 점
+- 모든 내장 객체 및 API가 객체의 인스턴스를 생성하는 것은 아니다.
 
 ## Reference
 - [https://developer.mozilla.org/ko/docs/Learn/JavaScript/Objects](https://developer.mozilla.org/ko/docs/Learn/JavaScript/Objects/Basics)
