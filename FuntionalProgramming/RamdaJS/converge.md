@@ -4,7 +4,6 @@
 > The arity of the new function is the same as the arity of the longest branching function. 
 - 새로운 함수의 피연산자는 분기함수의 피연산자와 같습니다.
 > When invoked, this new function is applied to some arguments, and each branching function is applied to those same arguments.
-- 실행될 때 이 새로운 함수는 적용합니다. 일부 인자에, 그리고 각 분기 함수는 다른 인자에 적용합니다.
 - `R.converge`에 의해 만들어진 수렴(converging) 함수가 호출되면, 호출될 때 전달된 인자가 각 분기함수의 인자로 전달됩니다. 각 분기 함수는 똑같은 인자를 전달 받습니다.
 > The results of each branching function are passed as arguments to the converging function to produce the return value.
 - 각 분기 함수의 결과는 수렴함수의 인자로 전달되며 수렴함수는 이들 인자를 연산한 결과 값을 반환합니다.
