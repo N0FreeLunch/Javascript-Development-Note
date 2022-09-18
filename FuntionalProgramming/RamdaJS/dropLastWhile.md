@@ -1,5 +1,6 @@
 ## dropLastWhile
 > Returns a new list excluding all the tailing elements of a given list which satisfy the supplied predicate function. It passes each value from the right to the supplied predicate function, skipping elements until the predicate function returns a falsy value. The predicate function is applied to one argument: (value).
+> Acts as a transducer if a transformer is given in list position.
 
 ## 표현
 ```
