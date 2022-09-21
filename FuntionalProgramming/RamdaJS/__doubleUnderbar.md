@@ -1,4 +1,18 @@
 ## \_\_
+> A special placeholder value used to specify "gaps" within curried functions, allowing partial application of any combination of arguments, regardless of their positions.
+
+> If g is a curried ternary function and `_` is `R.__`, the following are equivalent:
+
+> - g(1, 2, 3)
+> - g(_, 2, 3)(1)
+> - g(_, _, 3)(1)(2)
+> - g(_, _, 3)(1, 2)
+> - g(_, 2, _)(1, 3)
+> - g(_, 2)(1)(3)
+> - g(_, 2)(1, 3)
+> - g(_, 2)(_, 3)(1)
+
+## 설명
 - 람다JS 에서 언더바 ('\_') 두 개인 명칭의 함수
 - 람다JS 패키지를 R이라고 할 때, R에 속한 \_\_ 기능을 사용하는 것. `R.__`으로 사용한다.
 - 함수의 모든 인자가 꽉 차면 실행되며, 모든 인자가 다 꽉 차지 않으면 인자를 머금고 있는 함수를 반환한다.
@@ -25,8 +39,14 @@ g(_, 2)(_, 3)(1)
 - `g(\_, \_, 3)`에 `(1)`로 g함수의 첫 번째 인자를 채워넣고, 두 번째 인자를 받을 수 있는 함수를 반환한다.
 - `g(\_, \_, 3)(1)`은 두 번째 인자 하나만 채워지면 함수가 평가되는 상태이다. `g(\_, \_, 3)(1)`에 `(2)`를 넣으면 g의 인자가 꽉 차기 때문에 함수가 평가된다.
 
-## Exmaple
+## 예제
 ```
 const greet = R.replace('{name}', R.__, 'Hello, {name}!');
 greet('Alice'); //=> 'Hello, Alice!'
 ```
+- `replace` 함수는 세 번째 인자로 주어지는 문자열에서 첫 번째 인자로 주어지는 값에 해당하는 부분을 두 번째 인자로 바꾸는 함수이다.
+- 두 번째 인자를 `R.__`로 처리하고 나머지 인자는 채워졌으므로 반환된 `greet` 함수는 바뀐 값을 인자로 받는 함수가 된다.
+- `greet('Alice');` `'Alice'`으로 바뀐 값을 반환하므로 `'Hello, Alice!'`가 된다.
+
+## Reference
+- https://ramdajs.com/docs/#__
