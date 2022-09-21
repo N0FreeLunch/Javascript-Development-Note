@@ -1,5 +1,6 @@
 ## F
-> A function that always returns false. Any passed in parameters are ignored.
+> A function that always returns false. Any passed in parameters are ignored
+- 항상 거짓을 반환하는 함수이다. 파라메터로 전달된 어느 것도 무시된다.
 
 ## 표현
 ```
