@@ -1,6 +1,8 @@
 ## find
 > Returns the first element of the list which matches the predicate, or undefined if no element matches.
+- 주어진 리스트에서 주어진 술어 함수를 만족하는 첫 번째 원소를 반환한다. 또는 술어함수를 만족하는 원소가 없는 경우에는 `undefined`를 반환한다.
 > Dispatches to the find method of the second argument, if present.
+- 주어진 리스트의 원소가 자기 순번이 되면 탐색함수에 두 번째 인자로 넣는다.
 > Acts as a transducer if a transformer is given in list position.
 
 ## 표현
