@@ -1,6 +1,6 @@
 ## identity
 > A function that does nothing but return the parameter supplied to it. Good as a default or placeholder function.
-- 아무것도 하지 않는 함수이다. 파라메터로 주어진 값을 그대로 반환하는 함수이다. 
+- 아무것도 하지 않는 함수이다. 파라메터로 주어진 값을 그대로 반환하는 함수이다. 디폴드 함수를 넣을 때 또는 함수를 플레이스 홀더용 용도로 사용할 때 좋다.
 
 ## 표현
 ```
