@@ -11,6 +11,7 @@ Ord a => a → a → Boolean
 - `→ Boolean` `첫 번째 인자 <= 두 번째 인자`이면 참 아니면 거짓을 반환한다.
 
 ## 설명
+- 달리 설명이 필요없다.
 
 ## 예제
 ```
@@ -20,6 +21,7 @@ R.lte(2, 3); //=> true
 R.lte('a', 'z'); //=> true
 R.lte('z', 'a'); //=> false
 ```
+- 예제만으로 충분하므로 넘어간다.
 
 ## Reference
 - https://ramdajs.com/docs/#lte
