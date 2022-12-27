@@ -6,6 +6,7 @@
 > This differs from String.prototype.match which returns null when there are no matches.
 
 ## 설명
+- 정규 표현식 객체와 문자열을 받아 문자열에서 정규식에 매칭되는 부분을 반환한다. 매칭되지 않는 경우 undefined를 반환한다.
 
 ## 표현
 ```
@@ -21,6 +22,7 @@ R.match(/([a-z]a)/g, 'bananas'); //=> ['ba', 'na', 'na']
 R.match(/a/, 'b'); //=> []
 R.match(/a/, null); //=> TypeError: null does not have a method named "match"
 ```
+- 설명은 단순하므로 생략한다.
 
 ## Reference
 - https://ramdajs.com/docs/#match
