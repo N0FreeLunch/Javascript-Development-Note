@@ -1,4 +1,4 @@
-## \_\_
+## `__` double underbar
 > A special placeholder value used to specify "gaps" within curried functions, allowing partial application of any combination of arguments, regardless of their positions.
 
 > If g is a curried ternary function and `_` is `R.__`, the following are equivalent:
@@ -13,9 +13,11 @@
 > - g(_, 2)(_, 3)(1)
 
 ## 설명
-- 람다JS 에서 언더바 ('\_') 두 개인 명칭의 함수
-- 람다JS 패키지를 R이라고 할 때, R에 속한 \_\_ 기능을 사용하는 것. `R.__`으로 사용한다.
+- 언더바 두 개로 구성된 `__`라는 명칭의 함수이다. `R.__` 또는 `R.__`에 별칭을 부여하여 `_`으로 사용하기도 한다.
+- 람다 JS의 함수 또는 람다 JS의 커리 함수에 의해 커링된 함수에 사용할 수 있다.
+- 함수의 인자에 `_`를 할당하면 `_` 인자를 포함해서 해당 함수가 받을 수 있는 인자가 다 찬 다음에 인자에 `_` 적용한 순서대로 그 다음 인자로 `_` 부분을 받을 수 있는 함수를 반환한다.
 - 함수의 모든 인자가 꽉 차면 실행되며, 모든 인자가 다 꽉 차지 않으면 인자를 머금고 있는 함수를 반환한다.
+- `_`를 인자에 할당하더라도 이와 동시에 주어진 함수의 인자가 받도록 정의된 수 이상의 인자를 받으면 초과된 인자는 무시된다. 정해진 갯수의 인자를 받고 `_`된 부분의 인자를 받을 수 있는 함수를 반환한 이후 이 함수의 인자로 `_`된 부분의 인자를 `_`를 적용한 순대로 받을 수 있다.
 
 ```
 g(1, 2, 3)
