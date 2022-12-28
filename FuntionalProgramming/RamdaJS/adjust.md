@@ -1,11 +1,24 @@
 ## adjust
-`R.adjust(indexNumber, callbackFunction, list)`
-- indexNumber : 콜백함수를 적용할 리스트의 인덱스 번호, 음수 인덱스도 사용 가능하다.
+> Applies a function to the value at the given index of an array, returning a new copy of the array with the element at the given index replaced with the result of the function application.
 
 ## 설명
-- 지정한 인덱스의 원소에 정의한 콜백 함수를 적용시킨 후 리스트를 반환한다.
 - 리스트의 특정한 원소를 지정해서 해당 원소를 변화 시키고자 할 때 사용한다.
-- 여러 원소를 변경시키는 것이 아니라 단일 원소를 변경시킨다는 문제점이 있다.
+- 배열에서 지정한 인데스의 원소에 주어진 함수를 적용하여 값을 변경한 새 배열을 반환한다.
+- 여러 원소를 변경시키는 것이 아니라 단일 원소를 변경시킨다.
+
+## 문법
+```
+R.adjust(indexNumber, callbackFunction, array)
+```
+
+## 표현
+```
+Number → (a → a) → [a] → [a]
+```
+- `Number →` 첫 번째 인자로는 인덱스 번호를 지정한다.
+- `→ (a → a) →` 두 번째 인자로는 배열의 지정한 원소를 인자로 넣었을 때 치환하고 싶은 값을 리턴하는 함수를 받는다.
+- `→ [a] →` 세 번째 인자로는 배열을 받는다.
+- `→ [a]` 세 번째 인자로 받은 배열의 복사본이면서 첫 번째 인자로 받은 인덱스에 해당하는 원소를 두 번째 인자로 받은 함수의 인자로 넣었을 때 반환되는 값으로 원소를 치환한 배열을 반환한다.
 
 ## 예시
 ```
