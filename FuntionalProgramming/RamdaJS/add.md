@@ -10,6 +10,7 @@
 ```
 R.add(Number, Number)
 ```
+리턴타입 : `Number`
 
 ## 표현
 ```
