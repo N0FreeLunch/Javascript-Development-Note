@@ -12,6 +12,7 @@
 ```
 R.all(predicate, list)
 ```
+반환타입 : `Boolean`
 - predicate는 술어 함수를 의미하며, 대상의 참 거짓을 판별할 때 사용한다. predicate 부분에는 리스트 원소의 참 거짓을 판별할 수 있는 콜백함수를 정의한다.
 
 ## 표현
