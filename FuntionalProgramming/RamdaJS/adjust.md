@@ -10,7 +10,7 @@
 ```
 R.adjust(indexNumber, callbackFunction, array)
 ```
-반환값 : `array`
+반환타입 : `array`
 
 ## 표현
 ```
