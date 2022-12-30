@@ -38,6 +38,8 @@ const clock = R.mathMod(R.__, 12);
 clock(15); //=> 3
 clock(24); //=> 0
 ```
+- 24(0<=X<24)시 표기라면 12시 표기(0<=X<12)로 시간을 표시하기 위해 만든 함수이다.
+- 24시 표기를 받을 수 있도록 피제수를 나중에 받도록 하고 제수만을 남겨 clock 함수를 만들었다.
 
 ```
 const seventeenMod = R.mathMod(17);
@@ -45,6 +47,7 @@ seventeenMod(3);  //=> 2
 seventeenMod(4);  //=> 1
 seventeenMod(10); //=> 7
 ```
+- numberMod는 피제수가 지정되어 있을 때, modNumber은 제수가 고정되어 있을 때의 이름으로 사용하면 좋다.
 
 ## Reference
 - https://ramdajs.com/docs/#mathMod
