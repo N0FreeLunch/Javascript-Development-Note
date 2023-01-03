@@ -2,12 +2,18 @@
 > Creates a new function that, when invoked, caches the result of calling fn for a given argument set and returns the result. 
 - 주어진 함수 fn에 대해 fn을 호출할 때 주어진 인자 세트와 반환한 결과를 캐싱하는 새로운 함수를 만든다.
 > Subsequent calls to the memoized fn with the same argument set will not result in an additional call to fn; 
-- 한 번 호출된 다음에는 fn의 저장된 값을 호출한다. 이 때 저장된 fn은 같은 인자가 지정되며 추가적인 호출의 결과를 가지지 않는다.
+- 한 번 호출된 다음에는 fn의 저장된 값을 호출한다. 이 때 저장된 fn은 한 번 호출된 인자 세트와 동일한 인자 세트를 가질 때 함수 fn을 추가적으로 호출한 결과를 가지지 않는다.
 > instead, the cached result for that set of arguments will be returned.
 - 대신, 지정된 인자에 대한 캐쉬된 결과를 반환한다.
 > Care must be taken when implementing key generation to avoid key collision, or if tracking references, memory leaks and mutating arguments.
+- 키를 생성하는 함수를 만들 때 키 충돌을 피하기 위한 구현을 해야 하며, 참조 또는 메모리 누수 현상을 가진 대상 또는 인자가 참조로 인해 계속 변경되는 등의 단순 고정된 값의 전달이 값이나라 전달된 값의 변경에 따라 해당 값을 추적해야하는 경우를 주의해야 합니다.
 
 ## 설명
+- 동일한 인자 세트에 대해 한 번 호출된 인자 세트와 동일한 인자 세트가 들어 올 경우 저장된 인자세트를 반환한다.
+- 이 때 동일한 인자세트인지 판별하기 위한 함수를 받으며 이 함수가 인자 세트를 받을 때 동일한 문자열을 갖는다면 동일한 인자세트로 판별한다.
+- 첫 번째 인자로 인자 세트를 받아서 문자열을 반환하는 함수를 받으며 반환된 문자열이 동일할 경우 동일한 인자세트로 간주한다.
+- 두 번째 인자로 결과를 반환하고 결과를 캐싱할 함수를 지정한다. 이 함수는 인자 세트를 받아서 어떠한 결과를 반환하는 함수이다.
+- 첫 번째 인자와 두 번째 인자가 지정되면 함수를 반환하고 이 함수는 인자 세트를 받을 때 첫 번째 함수로 받은 함수에 의해 동일한 문자열 결과를 가질 경우 이전에 호출된 결과를 저장한 값을 반환하며, 첫 번째 함수에 의해 문자열로 반환된 인자 세트가 이전에 호출된적 없는 것으로 판별되면 두 번째 인자로 받은 함수에 인자 세트를 전달하여 함수를 실행한 결과를 반환한다.
 
 ## 표현
 ```
