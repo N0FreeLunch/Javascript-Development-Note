@@ -1,8 +1,12 @@
 ## ap
-- `R.ap()`
-- applies 라는 뜻을 가진 함수
+> ap applies a list of functions to a list of values.
+- 값을 나열한 리스트를 받아서 함수를 원소로 하는 리스트를 적용한다.
+
+> Dispatches to the ap method of the second argument, if present. Also treats curried functions as applicatives.
+
 
 ## 설명
+- applies 라는 뜻을 가진 함수이다.
 - 먼저 인자를 넣었을 때 반환 되는 구조를 입력하고 구조의 일부에 해당하는 인자를 넣었을 때, 설정된 구조에 따라서 결과를 반환하는 함수이다.
 
 ## 표현
@@ -38,10 +42,8 @@ Apply f => f (a → b) → f a → f b
 R.ap([R.multiply(2), R.add(3)], [1,2,3]); //=> [2, 4, 6, 4, 5, 6]
 ```
 - `R.multiply(2)`는 수 하나를 원소로 받아 2를 곱하는 함수이다. `R.add(3)`은 수 하나를 원소를 받아 3을 더하는 함수이다.
-- `R.ap([R.multiply(2), R.add(3)]);`에서 `[R.multiply(2), R.add(3)]` 배열 안의 함수를 `R.ap` 함수의 다음 인자로 받는 대상에게 적용한다.
-- `R.ap([R.multiply(2), R.add(3)], [1,2,3]);`에서 `[1,2,3]`의 각 원소에 `R.multiply(2)`을 적용하여 나온 결과값 `2`, `4`, `6`, `[1,2,3]`의 각 원소에 `R.add(3)`을 적용하여 나온 결과값 `4`, `5`, `6`을 
-- `[R.multiply(2), R.add(3)]`의 `R.multiply(2)` 대신 `R.add(3)`를 적용하여 나온 결과값 `4`, `5`, `6`으로 대체한다.
-- 따라서 `[R.multiply(2), R.add(3)]`이 `[2, 4, 6, 4, 5, 6]`이란 결과가 나온다.
+- `R.ap([R.multiply(2), R.add(3)]);`에서 `[R.multiply(2), R.add(3)]` 배열 안의 함수를 두 번째 인자로 받는 `[1,2,3]`에 각각 적용한다.
+- 두 번째 인자로 받는 배열의 각 원소가 함수의 인자가 되어 `R.multiply(2)(1)`, `R.multiply(2)(2)`, `R.multiply(2)(3)`을 한 결과 `[2,4,6]`을 얻는다. `R.add(3)(1)`, `R.add(3)(2)`, `R.add(3)(3)`한 결과 `[4,5,6]`을 얻는다. 해당 결과의 합집합인 `[2, 4, 6, 4, 5, 6]`이란 결과를 얻는다.
 
 ```
 R.ap([R.concat('tasty '), R.toUpper], ['pizza', 'salad']); //=> ["tasty pizza", "tasty salad", "PIZZA", "SALAD"]
@@ -49,8 +51,7 @@ R.ap([R.concat('tasty '), R.toUpper], ['pizza', 'salad']); //=> ["tasty pizza", 
 - 배열을 첫번째 인자로 받기 때문에 두 번째 인자도 배열로 받는다.
 - `R.concat('tasty ')`는 문자열 하나를 받아서 `tasty ` 문자열 뒤에 주어진 문자 원소를 받아서 반환하는 함수이다.
 - `R.toUpper`는 주어진 문자열 하나를 받아서 소문자를 대문자로 바꾼다.
-- `R.ap([R.concat('tasty '), R.toUpper], ['pizza', 'salad']);`에서 `R.concat('tasty ')`를 `['pizza', 'salad']`을 인자로 받아 `'tasty pizza'`, `'tasty salad'`를 만들어내고 `R.toUpper`를 `['pizza', 'salad']`에 적용하여 `"PIZZA"`, `"SALAD"`를 만들어 낸다.
-- 이를 리스트의 위치에 대체하여 `["tasty pizza", "tasty salad", "PIZZA", "SALAD"]`이란 결과를 만들어 낸다.
+- `R.ap([R.concat('tasty '), R.toUpper], ['pizza', 'salad']);`에서 `R.concat('tasty ')`를 `['pizza', 'salad']`을 인자로 받아 `'tasty pizza'`, `'tasty salad'`를 만들어내고 `R.toUpper`를 `['pizza', 'salad']`에 적용하여 `"PIZZA"`, `"SALAD"`를 만들어 낸다. 해당 결과의 합집합인 `["tasty pizza", "tasty salad", "PIZZA", "SALAD"]`이란 결과를 얻는다.
 
 ```
 // R.ap can also be used as S combinator
