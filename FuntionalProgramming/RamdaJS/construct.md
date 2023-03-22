@@ -1,6 +1,6 @@
 ## construct
 > Wraps a constructor function inside a curried function that can be called with the same arguments and returns the same type.
-- 동일한 인자들과 동일한 리턴 타입을 가진 호출될 수 있는 커링된 함수로 생성자 함수로 전이(`wraps`)시킨다.
+- 내부적으로 커링된 함수로 생성자 함수를 감싼다. 생성자 함수를 레핑한 커링된 함수는 생성자 함수와 동일한 인자와 동일한 리턴 타입을 가진 함수로써 호출된다.
 
 > See also invoker.
 
