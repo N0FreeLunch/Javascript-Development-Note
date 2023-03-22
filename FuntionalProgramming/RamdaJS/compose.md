@@ -5,6 +5,8 @@
 > Note: The result of compose is not automatically curried.
 - `compose`함수를 통해서 합성된 함수는 자동적으로 커리되지 않는다.
 
+> See also pipe.
+
 ## 설명
 - 여러 개의 함수를 하나의 함수로 합성하는 기능을 한다.
 - 합성된 함수의 인자로 값을 하나 받아서 오른쪽에 나열된 함수의 평가 결과를 그 옆의 왼쪽 함수의 인자로 전달하는 방식으로 주어진 함수를 평가한 결과를 내 놓는 함수이다.
