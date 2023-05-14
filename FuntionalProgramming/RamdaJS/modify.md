@@ -14,6 +14,10 @@
 ```
 Idx → (v → v) → {k: v} → {k: v}
 ```
+- `Idx →` 첫 번째 인자로 오브젝트의 인덱스 이름을 받는다.
+- `→ (v → v) →` 두 번째 인자로는 함수를 받는다. 이 때, v는 value 타입으로 오브젝트의 프로퍼티 값으로 가능한 값이어야 한다.
+- `→ {k: v} →` 세 번째 인자로는 오브젝트를 받는다. 첫 번째 인자에서 지정한 대상 프로퍼티의 프로퍼티 값은 두 번째 인자로 받는 함수의 인자로 전달될 수 있어야 한다.
+- `→ {k: v}` 새로운 오브젝트가 반환된다.
 
 ## 예제
 ```js
@@ -21,6 +25,9 @@ const person = {name: 'James', age: 20, pets: ['dog', 'cat']};
 R.modify('age', R.add(1), person); //=> {name: 'James', age: 21, pets: ['dog', 'cat']}
 R.modify('pets', R.append('turtle'), person); //=> {name: 'James', age: 20, pets: ['dog', 'cat', 'turtle']}
 ```
+- `person`이란 오브젝트를 받는다.
+- `R.modify('age', R.add(1), person)`는 `person`이란 오브젝트에서 `age` 프로퍼티의 값인 20을 `R.add(1)` 함수에 인자로 전달하여 21이란 값을 얻고 이를 기존 오브젝트의 age 값을 대체하여 `{name: 'James', age: 21, pets: ['dog', 'cat']}`라는 오브젝트를 반환한다.
+- `R.modify('pets', R.append('turtle'), person)`는 `person`이란 오브젝트에서 `pets` 프로퍼티의 값인 `['dog', 'cat']`을 `R.append('turtle')` 함수에 인자로 전달하여 `['dog', 'cat', 'turtle']`이란 값을 얻고 기존 오브젝트의 `pets` 값을 대체하여 `{name: 'James', age: 20, pets: ['dog', 'cat', 'turtle']}`라는 값을 얻는다.
 
 ## Reference
 - https://ramdajs.com/docs/#modify
