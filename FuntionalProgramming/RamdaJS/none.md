@@ -7,6 +7,7 @@
 > Acts as a transducer if a transformer is given in list position.
 
 ## 설명
+- 주어진 리스트의 원소들 중에 아무것도(none) 술어함수를 만족하는 것이 없을 때 참을 반환한다.
 
 ## 표현
 ```
