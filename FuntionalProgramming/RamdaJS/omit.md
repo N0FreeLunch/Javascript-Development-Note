@@ -1,5 +1,6 @@
 ## omit
 > Returns a partial copy of an object omitting the keys specified.
+- 지정한 키를 누락시킨 부분적인 속성을 갖는 오브젝트의 카피를 반환한다.
 
 > See also pick.
 
