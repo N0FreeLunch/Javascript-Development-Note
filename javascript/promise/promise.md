@@ -55,4 +55,34 @@ const checkLoadingFlag = setInterval(() => {
 ```
 
 - setTimeout : 위의 `loadingFlag`가 true가 되는 때를 확인을 하고 코드를 실행하는 방식이다. 위의 코드는 `setTimeout`의 첫 번째 인자로 넣은 익명함수가 실행될 때까지 0~5초가 걸리는 `Math.random()*5*1000`와 함께 사용하였다.
-- setInterval : 데이터를 받았을 때 `loadingFlag`가 true가 되므로 0.5초 마다 데이터를 받은 플레그가 변경되었는지를 체크한다. 플레그가 변경되었다면 더 이상 주기적으로 확인하지 않아도 되므로 `clearInterval`을 해 준다. `if(loadingFlag)` 조건문으로 실행되는 코드에 데이터를 받았을 때 실행할 코드 `runAfterLoading` 함수를 넣어준다.
+- setInterval : 데이터를 받았을 때 `loadingFlag`가 true가 되므로 0.5초 마다 데이터를 받은 플레그가 변경되었는지를 체크한다. 플레그가 변경되었다면 더 이상 주기적으로 확인하지 않아도 되므로 메모리 절약을 위해 `clearInterval`을 해 준다. `if(loadingFlag)` 조건문으로 실행되는 코드에 데이터를 받았을 때 실행할 코드 `runAfterLoading` 함수를 넣어준다.
+- 이 코드의 단점은 주기적으로 확인하는 코드를 실행하기 때문에 시스템의 리소스를 좀 더 소비하는 문제가 있고, 상태의 변경에 관여하는 코드와 상태를 변경을 감지하는 코드가 나눠져 있기 때문에 코드의 메인테넌스성이 떨어진다.
+
+#### 콜백 중첩
+```js
+const runAfterLoading = () => {
+  console.log('next execution');
+};
+
+setTimeout(() => { 
+  console.log("loaded");
+  runAfterLoading();
+}, Math.random()*5*1000);
+```
+- `setTimeout`으로 지정한 시간 후 첫 번째 콜백함수가 실행되었을 때 `runAfterLoading`를 호출하는 함수를 만들어 둔다.
+
+#### 프로미스
+```js
+let loadPromise = new Promise((resolve, reject) => {
+  setTimeout(function () {
+    resolve("resolved");
+    console.log("loaded");
+  }, Math.random()*5*1000);
+});
+
+loadPromise.then((successMessage) => {
+  console.log("delivered data : " + successMessage);
+});
+```
+
+
