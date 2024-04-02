@@ -17,7 +17,7 @@ Idx = String | Int | Symbol
 - 만약 오브젝트에서 프로퍼티를 찾을 수 없다면 `undefined`를 반환한다.
 
 ## 예제
-```
+```js
 R.prop('x', {x: 100}); //=> 100
 R.prop('x', {}); //=> undefined
 R.prop(0, [100]); //=> 100
