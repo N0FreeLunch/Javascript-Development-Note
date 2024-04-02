@@ -22,7 +22,7 @@ Idx = String | Int | Symbol
 - `→ a | Undefined` 오브젝트 내부에서 첫 번째 인자로 받은 경로에 매칭되는 값이 대상이 존재하면 대상의 값인 a를 반환하고, 매칭되는 대상이 없다면 `Undefined`를 반환한다.
 
 ### 예제
-```
+```js
 R.path(['a', 'b'], {a: {b: 2}}); //=> 2
 R.path(['a', 'b'], {c: {b: 2}}); //=> undefined
 R.path(['a', 'b', 0], {a: {b: [1, 2, 3]}}); //=> 1
