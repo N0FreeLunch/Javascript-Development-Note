@@ -4,7 +4,7 @@
 - 함수 f는 preprocessor에 해당하며, g는 postprocessor에 해당한다. 세 번째로 받은 함수는 변환의 핵심이 되는 함수 h에 해당한다. 즉, `promap(f, g, h)(x) === g(h(f(x))).`이다.
 
 > Dispatches to the promap method of the third argument, if present, according to the FantasyLand Profunctor spec.
-- FantasyLand의 Profunctor 스펙에 따라 만약 존재한다면 세번째 인자에 해당하는 promap method 메소드는 실행된다.
+- [FantasyLand의 Profunctor 스펙](https://github.com/fantasyland/fantasy-land?tab=readme-ov-file#profunctor)에 따라 세 번째 인자가 존재하면, promap 메소드는 실행(dispatche)된다.
 
 > Acts as a transducer if a transformer is given in profunctor position.
 
