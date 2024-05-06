@@ -1,5 +1,14 @@
 ## prop
-- R.prop
+> Returns a function that when supplied an object returns the indicated property of that object, if it exists.
+- 오브젝트가 주어졌을 때 오브젝트의 지정한 프로퍼티를 반환하는 함수를 반환한다. 이 때 지정한 프로퍼티가 오브젝트에 존재 해야 한다.
+
+> See also path, props, pluck, project, nth.
+
+## 설명
+- 첫 번째 인자로는 오브젝트에서 뽑을 프로퍼티명을 지정한다.
+- 두 번째 인자로는 대상 오브젝트를 지정한다.
+- 결과는 두 번째 인자로 주어진 오브젝트에서 첫 번째 인자로 지정한 명칭의 프로퍼티의 값을 뽑아낸다.
+- 만약 오브젝트에서 프로퍼티를 찾을 수 없다면 `undefined`를 반환한다.
 
 ## 표현
 ```
@@ -9,12 +18,6 @@ Idx = String | Int | Symbol
 - `Idx → {s: a} → (a | Undefined)` 구성으로 봐야 한다.
 - 첫 번째 인자로는 인덱스(Idx)를 받는다. `{s: a}`에서 지정한 Idx에 해당하는 s 프로퍼티를 선택하여 값 a를 반환한다. 하지만 프로퍼티가 없다면 `undefined`를 반환한다.
 - `Idx = String | Int | Symbol`는 Idx가 어떤 것으로 구성되어 있는지에 관한 것이다. 문자열 또는 정수 또는 Symbol 타입이 Idx 타입이다.
-
-## 설명
-- 첫 번째 인자로는 오브젝트에서 뽑을 프로퍼티명을 지정한다.
-- 두 번째 인자로는 대상 오브젝트를 지정한다.
-- 결과는 두 번째 인자로 주어진 오브젝트에서 첫 번째 인자로 지정한 명칭의 프로퍼티의 값을 뽑아낸다.
-- 만약 오브젝트에서 프로퍼티를 찾을 수 없다면 `undefined`를 반환한다.
 
 ## 예제
 ```js
