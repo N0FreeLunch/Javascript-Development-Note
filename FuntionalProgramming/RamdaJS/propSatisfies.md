@@ -1,10 +1,12 @@
 ## propSatisfies
 > Returns true if the specified object property satisfies the given predicate; false otherwise. You can test multiple properties with R.where.
-- 주어진 술어함수를 만족하는 오브젝트의 프로퍼티가 지정되면, true를 반환한다. 만약 조건을 만족하지 못하면 false를 반환한다. `R.where`와 함께 쓰여 복수의 프포퍼티를 테스트 할 수 있다.
+- 주어진 술어함수를 만족하는 오브젝트의 프로퍼티가 지정되면, true를 반환한다. 만약 조건을 만족하지 못하면 false를 반환한다. `R.where`와 함께 쓰여 복수의 프로퍼티를 테스트 할 수 있다.
 
 > See also where, propEq, propIs.
 
 ### 설명
+- 지정한 프로퍼티의 값이 주어진 술어함술르 만족하면 true, 아니면 false를 반환한다. 대상 프로퍼티가 존재하지 않는 경우에는 그렇지 않은 경우에 해당하므로 false가 반환된다.
+- `propSatisfies`가 하나의 프로퍼티의 값에 대한 참 거짓을 판별하는 반면, `where`은 오브젝트가 가진 각각의 프로퍼티에 대한 술어함수를 지정해서 여러 프로퍼티에 대해 각 값이 술어함수를 만족하는지 확인하는 함수이다.
 
 ### 표현
 ```
