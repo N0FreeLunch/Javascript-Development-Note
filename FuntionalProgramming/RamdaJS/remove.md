@@ -1,11 +1,21 @@
 ## remove
-> Removes the sub-list of list starting at index start and containing count elements. Note that this is not destructive: it returns a copy of the list with the changes. No lists have been harmed in the application of this function.
+> Removes the sub-list of list starting at index start and containing count elements.
+- 서브 리스트에 해당하는 원소들을 리스트에서 제거한다. 서브 리스트는 시작점의 인덱스부터 원소의 수를 포함한다. 
+> Note that this is not destructive: it returns a copy of the list with the changes.
+- 참고로, 제거할 원소들을 파괴하는 것이 아니라 원소가 제거된 변화된 리스트의 복사본을 반환한다.  
+> No lists have been harmed in the application of this function.
+- 애플리케이션의 어떠한 리스트도 이 함수에 의해 영향을 받지 않는다.
 
 > See also without.
 
 > Open in REPLRun it here
 
 ### 설명
+- 배열에서 시작 지점과 선택된 지점에서 지정한 갯수의 원소를 제거한 배열을 반환한다.
+- 첫 번째 인자로 시작 지점에 해당하는 인덱스 번호를 받는다.
+- 두 번째 인자로 제거할 원소의 갯수를 받는다.
+- 세 번째 인자로 대상 배열을 받는다.
+- 배열을 반환하며, 첫 번째 인자의 인덱스 번호에 해당하는 원소부터 지정한 갯수의 원소만큼을 서브리스트로 하고 이 서브리스트의 원소 만큼을 제거한 배열을 반환한다.
 
 ### 표현
 ```
