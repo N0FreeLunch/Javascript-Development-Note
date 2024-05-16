@@ -3,7 +3,7 @@
 - filter의 차집합이다.
 
 > Acts as a transducer if a transformer is given in list position.
-> 만약 순회시 각각의 원소의 리스트 위치를 축적하는 transformer가 주어진다면, 순회 가능한 대상의 각각의 원소를 변환하는 transducer의 역할을 한다.
+- 만약 순회시 각각의 원소의 리스트 위치를 축적하는 transformer가 주어진다면, 순회 가능한 대상의 각각의 원소를 변환하는 transducer의 역할을 한다.
 
 > Filterable objects include plain objects or any object that has a filter method such as Array.
 - 필터할 수 있는 오브젝트는 plain objects 또는 배열과 같은 filter 메소드를 가진 오브젝트이다.
