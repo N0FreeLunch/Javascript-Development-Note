@@ -9,6 +9,7 @@
 - 이 함수는 기본적으로 좀 더 일반적인 groupBy 함수에 해당한다.
 
 > Acts as a transducer if a transformer is given in list position.
+- 리스트를 (인자를) 받는 위치에 변형기(transformer)가 주어지는 경우 변환기(transducer)의 행동을 한다.
 
 > See also groupBy, reduce, reduced.
 
