@@ -12,7 +12,7 @@
 - R.reduce는 네이티브 Array.prototype.reduce 메서드와 달리 삭제되거나 또는 할당되지 않은 인덱스들 (일부 원소가 비어 있는 배열)을 건너뛸 수 없다. 더 자세한 사항은 `https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce#Description`을 보라
 
 > Be cautious of mutating and returning the accumulator. If you reuse it across invocations, it will continue to accumulate onto the same value. The general recommendation is to always return a new value. If you can't do so for performance reasons, then be sure to reinitialize the accumulator on each invocation.
-- 누산기(accumulator, 누적되는 값으로 생각하면 된다.)의 반환하거나 변경할 때는 주의할 점이 있다. 만약 누산기(accumulator)를 여러 번 (원소를 순회 하면서 순회 함수의 적용을) 반복하는 동안 재사용하는 경우 누산기(accumulator)는 계속해서 같은 값을 누적할 것이다. 일반적인 권장사항은 항상 새로운 값을 반환하도록 하는 것이다. 성능상의 이유로 (대상을 복사하는 방식을 사용)할 수 없다면, 누산기가 호출 될 때 반드시 초기화를 해야 한다.
+- 누산기(accumulator, 누적되는 값으로 생각하면 된다.)의 반환하거나 변경할 때는 주의할 점이 있다. 만약 누산기(accumulator)를 여러 번 (원소를 순회 하면서 순회 함수의 적용을) 반복하는 동안 재사용하는 경우 누산기(accumulator)는 계속해서 같은 값을 누적할 것이다. 일반적인 권장사항은 항상 새로운 값을 반환하도록 하는 것이다. 성능상의 이유로 (대상을 복사하거나 새로운 값을 생성하는 방식을 사용)할 수 없다면, 누산기가 호출 될 때 반드시 초기화를 해야 한다.
 
 > Dispatches to the reduce method of the third argument, if present. When doing so, it is up to the user to handle the R.reduced shortcuting, as this is not implemented by reduce.
 - 만약 reduce 메소드의 세번째 인자가 존재하면 reduce 메소드의 세번째 발동한다. 만약 발동(디스패치)된다면 reduce로 구현되지 않으므로 유저는 R.reduced를 사용한 단축을 다룰 수 없다.
