@@ -6,7 +6,7 @@
 - reduce 함수와 비슷하지만, 주어진 입력 리스트를 오른쪽에서 왼쪽으로 처리한다.
 
 > The iterator function receives two values: (value, acc), while the arguments' order of reduce's iterator function is (acc, value). reduceRight may use reduced to short circuit the iteration.
-- 순회 함수는 (value, acc)라는 두 값을 받는 반면, reduce의 순회 함수의 인수 순서는 (acc, value)이다. reduceRight는 reduced 함수를 사용하여 간략(short circuit)한 순회의 사용할 수 있다.
+- (reduceRight의) 순회 함수는 (value, acc)라는 두 값(인자)을 받는 반면, reduce의 순회 함수의 (인자) 순서는 (acc, value)이다. reduceRight는 reduced 함수를 사용하여 간략(short circuit)한 순회의 사용할 수 있다.
 
 > Note: R.reduceRight does not skip deleted or unassigned indices (sparse arrays), unlike the native Array.prototype.reduceRight method. For more details on this behavior, see: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduceRight#Description
 - R.reduce는 네이티브 Array.prototype.reduce 메서드와 달리 삭제되거나 또는 할당되지 않은 인덱스들 (일부 원소가 비어 있는 배열)을 건너뛸 수 없다. 더 자세한 사항은 `https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce#Description`을 보라
@@ -24,6 +24,8 @@
 ```
 ((a, b) → b) → b → [a] → b
 ```
+- `((a, b) → b) →`: 첫 번째 인자로는 순회 함수를 받는다. reduce 함수의 순회 함수와 달리 reduceRight의 순회 함수는 인자를 반대로 받는데 a가 현재 순회 대상 원소를 전달 받고, b가 이전 순회 함수의 반환 값 또는 누산기의 초기값을 받는다.
+- `→ b →`: 두 번째 인자로는 누산기의 초기값을 받는다.
 
 ### 예제
 ```js
@@ -40,7 +42,12 @@ R.reduceRight(R.subtract, 0, [1, 2, 3, 4]) // => (1 - (2 - (3 - (4 - 0)))) = -2
 ```
 - `R.subtract`는 첫 번째 인자 값에서 두 번째 인자 값을 뺀다. `R.subtract`는 순회 함수로 사용 되었다. 첫 번째 인자는 누산기 값으로 이전 순회함수의 결과 값이가 누산기의 초기값을 전달 받으며, 두 번째 인자는 현재 배열의 현재 순회 대상을 전달 받는다.
 - 두 번째 인자로는 누산기의 초기값을 받았다. 세 번째로는 순회할 배열을 받는다.
-- 일반적인 reduce의 경우 (((0 - 1) - 2) - 3) - 4의 순서로 계산이 된다. 하지만 reduceRight의 경우에는 순회를 배열의 마지막부터 시작하고 누산기의 초기값도 마지막 원소에 적용되는 순회 함수에 전달 된다. 또한 순회 함수의 인자를 반대로 받기 때문에 1 -(2 - (3 - (4 - 0)))의 순서로 계산된다.
+- 일반적인 reduce의 경우 (((0 - 1) - 2) - 3) - 4의 순서로 계산이 된다. 하지만 reduceRight의 경우에는 순회를 배열의 마지막부터 시작하고 누산기의 초기값도 마지막 원소에 적용되는 순회 함수에 전달 된다. 또한 순회 함수의 인자를 반대로 받기 때문에 1 - (2 - (3 - (4 - 0)))의 순서로 계산된다.
+- 첫 번째 순회의 순회 함수는 순회 대상 원소인 4를 첫 번째 인자로 누산기의 초기값 0을 두 번째 인자로 받는다. (reduceRight는 reduce와 달리 인자의 순서를 반대로 받는다.) ｀R.subtract｀ 함수는 첫 번째 인자에서 두 번째 인자를 빼기 때문에 4 - 0이 된다.
+- 두 번째 순회의 순회 함수는 순회 대상 원소인 3을 첫 번째 인자로 첫 번째 순회의 순회 함수의 반환 값인 4 - 0을 두 번째 인자로 받는다. 따라서 3 - (4 - 0)이 된다.
+- 세 번째 순회의 순회 함수는 순회 대상 원소인 2를 첫 번째 인자로 두 번째 순회의 순회 함수의 반환 값인 3 - (4 - 0)을 두 번째 인자로 받는다. 따라서 2 - (3 - (4 - 0))이 된다.
+- 네 번째 순횐의 순회 함수는 순회 대상원소인 1을 첫 번째 인자로 두 번째 순회의 순회 함수의 반환값인 2 - (3 - (4 - 0))를 두 번째 인자로 받는다. 따라서 1 - (2 - (3 - (4 - 0)))가 된다.
+- 최종적으로 반환되는 결과는 누산기에 1 - (2 - (3 - (4 - 0)))가 적용된 -2를 반환한다.
 
 ## Reference
 - https://ramdajs.com/docs/#reduceRight
