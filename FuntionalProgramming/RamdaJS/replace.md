@@ -13,7 +13,8 @@ function replacer(match, p1, p2, /* …, */ pN, offset, string, groups) {
 - String.prototype.replace()의 두 번째 인자로 문자열 대신에 함수를 받을 수 있는데 이는 매칭 대상이 있을때 대체할 값을 고정값이 아닌 조건에 맞게 변경할 수 있도록 만든다.
 - 자세한 사항은 [공식문서](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replace#specifying_a_function_as_the_replacement)를 참고하자.
 
-###
+### 설명
+- 자바스크립트 네이티브 함수의 replace의 기능을 갖지만, '대상문자열.replace(패턴, 대체자)'가 아닌 'R.replace(패턴, 대체자, 대상문자열)'의 형태를 가진다. 동일한 기능의 Ramda식 표현으로 보면된다.
 
 ### 표현
 ```
