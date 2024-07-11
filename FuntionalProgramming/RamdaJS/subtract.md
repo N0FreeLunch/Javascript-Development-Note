@@ -1,6 +1,6 @@
 ## subtract
 > Subtracts its second argument from its first argument.
-> 첫 번째 인자에서 두 번째 인자를 뺀다.
+- 첫 번째 인자에서 두 번째 인자를 뺀다.
 
 > See also add.
 
