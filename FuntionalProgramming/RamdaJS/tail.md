@@ -1,0 +1,42 @@
+## tail
+> Returns all but the first element of the given list or string (or object with a tail method).
+- 주어진 리스트 또는 문자열에서 첫 번째 원소를 제외한 모든 원소를 반환한다. 또는 tail 메소드를 가진 오브젝트를 대상으로 할 수도 있다.
+
+> Dispatches to the slice method of the first argument, if present.
+- 첫 번째 인자(리스트, 문자열, 오브젝트 등)에 slice 메소드가 존재하면 slice 메소드를 발동한다.
+
+> See also head, init, last.
+
+### 설명
+- 배열, 문자열에 대해 첫 번째 원소를 제외한 나머지 원소를 주어진 형태와 같은 형태로 반환한다. 배열이면 배열으로, 문자열이면 문자열로 반환한다.
+- 자바스크립트는 모두 object 타입인데, 이는 property를 가진다. property에 tail 메소드가 존재하면 배열, 문자열이 아니더라도 `R.tail`의 인자로 전달할 수 있다.
+
+### 표현
+```
+[a] → [a]
+String → String
+```
+
+#### 배열에 대해
+- `[a] →`: 첫 번째 인자로 배열을 받는다. 이 때, 배열의 원소는 동일한 타입 파라메터이다.
+- `→ [a]`: 원소의 순서와 값을 동일하게 유지한 채, 첫 번째 원소만 제거된 배열을 반환한다.
+
+#### 문자열에 대해
+- `String →`: 첫 번째 인자로 문자열을 받는다.
+- `→ String`: 문자열에서 문자의 순서와 문자값을 그대로 유지한 채, 첫 번째 문자만 제거된 문자열을 반환한다.
+
+### 예제
+```js
+R.tail([1, 2, 3]);  //=> [2, 3]
+R.tail([1, 2]);     //=> [2]
+R.tail([1]);        //=> []
+R.tail([]);         //=> []
+
+R.tail('abc');  //=> 'bc'
+R.tail('ab');   //=> 'b'
+R.tail('a');    //=> ''
+R.tail('');     //=> ''
+```
+
+## Reference
+- https://ramdajs.com/docs/#tail
