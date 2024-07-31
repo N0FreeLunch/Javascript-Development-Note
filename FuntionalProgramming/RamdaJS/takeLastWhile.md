@@ -27,6 +27,9 @@
 ```
 (a → Boolean) → String → String
 ```
+- `(a → Boolean)`: 첫 번째 인자로 술어함수를 받는다. 이 때 a는 문자열의 문자를 받을 수 있는 종류이다.
+- `→ String →`: 두 번째 인자로 문자열을 받는다.
+- `→ String`: 두 번째 인자로 받은 문자열의 문자 중에서 마지막까지의 연속한 n개의 문자를 나열한 문자열을 반환한다.
 
 ### 예제
 ```js
@@ -36,6 +39,9 @@ R.takeLastWhile(isNotOne, [1, 2, 3, 4]); //=> [2, 3, 4]
 
 R.takeLastWhile(x => x !== 'R' , 'Ramda'); //=> 'amda'
 ```
+- `isNotOne`: 술어함수는 인자로 받은 값이 1이 아닌지를 확인한다.
+- `R.takeLastWhile(isNotOne, [1, 2, 3, 4])`: 마지막 원소 부터 `isNotOne` 함수에 전달한 결과가 false가 나올 때 까지 차례로 순회할 때 true가 나오는 원소는 4, 3, 2이다. 원소의 나열 순서를 그대로 한 배열은 `[2, 3, 4]`가 된다.
+- `R.takeLastWhile(x => x !== 'R' , 'Ramda')`: 마지막 문자부터 ` => x !== 'R'` 함수에 문자 하나씩 전달한 결과가 false가 나올 때 까지 차례로 순회할 때 true가 나오는 문자는 a, d, m, a이다. 원소의 나열 순서를 그대로 한 문자열은 `'amda'`가 된다.
 
 ## Reference
 - https://ramdajs.com/docs/#takeLastWhile
