@@ -16,7 +16,7 @@ RegExp → String → Boolean
 - `→ Boolean`: 두 번째 인자로 받은 문자열이 첫 번째 인자의 정규 표현식을 통과하면 true, 아니면 false를 반환한다.
 
 ### 예제
-```
+```js
 R.test(/^x/, 'xyz'); //=> true
 R.test(/^y/, 'xyz'); //=> false
 ```
