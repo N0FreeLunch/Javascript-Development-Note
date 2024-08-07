@@ -1,4 +1,4 @@
-## toPairsInv
+## toPairsIn
 > Converts an object into an array of key, value arrays.
 - 오브젝트를 키, 벨류의 배열들로 이뤄진 배열으로 변환한다.
 
