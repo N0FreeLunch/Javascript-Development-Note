@@ -30,7 +30,7 @@ uncurriedAddFour(1, 2, 3, 4); //=> 10
 ```
 - `addFour`은 a, b, c, d 네 개의 인자를 받기 전에는 함수를 평가한 결과는 나머지 인자를 하나씩 순서대로 받을 수 있는 함수가 반환되는 형태이다. `addFour(1)(2)(3)(4)`의 형태로 모든 인자를 하나씩 받은 후에야 평가된다. 커링과 달리, 인자 여럿을 한 번에 받지는 않는다.
 - `R.uncurryN(4, addFour)` 부분은 `R.uncurryN` 함수에 의해 인자를 4개 받을 때 까지의 대상을 커링한다. `uncurriedAddFour`는 커링이 되어 있기 때문에, 다음과 같은 인자를 함께 받고 나눠 받는 모든 패턴을 사용할 수 있다.
-```
+```js
 uncurriedAddFour(1, 2, 3, 4);
 uncurriedAddFour(1)(2, 3, 4);
 uncurriedAddFour(1, 2)(3, 4);
