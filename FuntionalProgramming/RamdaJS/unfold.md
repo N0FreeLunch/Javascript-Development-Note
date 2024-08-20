@@ -1,9 +1,9 @@
 ## unfold
 > Builds a list from a seed value. Accepts an iterator function, which returns either false to stop iteration or an array of length 2 containing the value to add to the resulting list and the seed to be used in the next call to the iterator function.
-> 시드 값에서 리스트를 빌드한다. 순회 함수를 (인자로) 받는데, 이 순회 함수는 순회를 중지하기 위해 false를 반환하거나 아니면 길이가 2인 배열을 반환한다. (반환된 길이가 2인) 배열의 경우 결과 리스트에 추가할 값(반환 배열의 첫 번째 원소)과 다음에 호출될 순회 함수에서 사용될 시드(반환 배열의 두 번째 원소)를 포함한다.
+- 시드 값에서 리스트를 빌드한다. 순회 함수를 (인자로) 받는데, 이 순회 함수는 순회를 중지하기 위해 false를 반환하거나 아니면 길이가 2인 배열을 반환한다. (반환된 길이가 2인) 배열의 경우 결과 리스트에 추가할 값(반환 배열의 첫 번째 원소)과 다음에 호출될 순회 함수에서 사용될 시드(반환 배열의 두 번째 원소)를 포함한다.
 
 > The iterator function receives one argument: (seed).
-- 순회 함수는 하나의 인자를 받는다. (seed)
+- 순회 함수는 하나의 인자를 받는다. 이 값을 시드(seed)라 부른다.
 
 ### 설명
 - 순회함수와 초기값을 받아 초기값을 순회함수에 전달하여 얻을 결과 값을 나열하고, 시드 값을 다음 순회함수에 전달한다.
