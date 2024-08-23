@@ -1,9 +1,9 @@
 ## equals
 > Returns true if its arguments are equivalent, false otherwise. Handles cyclical data structures.
-- 인자들이 서로 동등하다면 true를 반환하고 그렇지 않으면 false를 반환한다. 순환하는 데이터 구조도 다룰 수 있다.
+- 인자들이 서로 동등하다면 true를 반환하고 그렇지 않으면 false를 반환한다. 순환하는 데이터 구조의 동등성도 다룰 수 있다.
 
 > Dispatches symmetrically to the equals methods of both arguments, if present.
-- 두 인자의 eqaul 메소드가 존재한다면 양쪽 모두의 equal 메소드를 실행하여 동일한지 확인한다.
+- 두 인자의 eqaul 메소드가 존재한다면 양쪽 모두의 equal 메소드를 실행하여 (한쪽의 메소드의 eqaul를 만족한다면 해당 메소드를 통해) 동일한지 확인한다.
 
 ## 설명
 - 두 인자를 받아서 값이 일치하면 참을 아니면 거짓을 반환한다.
@@ -35,3 +35,4 @@ R.equals(a, b); //=> true
 
 ## Reference
 - https://ramdajs.com/docs/#equals
+- https://github.com/ramda/ramda/blob/master/test/equals.js
