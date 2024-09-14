@@ -1,8 +1,8 @@
 # functor
 
-> 1. u['fantasy-land/map'](a => a) is equivalent to u (identity)
+> 1. `u['fantasy-land/map'](a => a)` is equivalent to u (identity)
 - `u['fantasy-land/map'](a => a)`은 u와 같다. (항등함수)
-> 3. u['fantasy-land/map'](x => f(g(x))) is equivalent to u['fantasy-land/map'](g)['fantasy-land/map'](f) (composition)
+> 3. `u['fantasy-land/map'](x => f(g(x)))` is equivalent to `u['fantasy-land/map'](g)['fantasy-land/map'](f)` (composition)
 - `u['fantasy-land/map'](x => f(g(x)))`는 `u['fantasy-land/map'](g)['fantasy-land/map'](f)`와 같다. (컴포지션)
 
 fantasy-land/map method
