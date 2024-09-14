@@ -39,4 +39,4 @@ functor는 범주와 범주 사이의 맵이다. 예를 들어 정의역(X)인 �
 
 `u['fantasy-land/map'](a => a)`: fantasy-land/map의 개념에서 성립하는 배열을 functor u라고 하자. 동일 범주 내 연산으로 항등함수(`a => a`)가 주어졌을 경우, 그 결과는 펑터 u와 같다는 의미이다. `R.map(a => a)`는 자바스크립트의 배열 u에 대해 `R.map(a => a, u)`은 `u`가 된다.
 
-`u['fantasy-land/map'](x => f(g(x)))`: fantasy-land/map의 개념에서 성립하는 배열을 functor u라고 하자. 동일 범주 내 연산으로 합성함수(`x => f(g(x))`)가 주어졌을 경우, 그 결과는 `u['fantasy-land/map'](g)`로 반환된 펑터에 `['fantasy-land/map'](f)`를 전달한 것과 같다는 의미이다. 곧, `R.map(x => f(g(x)), u)`는 자바스크립트 배열에 대해 `R.pipe(R.map(x => g(x)), R.map(x => f(x)))(u)`와 같아야 한다는 것을 의미한다.
+`u['fantasy-land/map'](x => f(g(x)))`: fantasy-land/map의 개념에서 성립하는 배열을 functor u라고 하자. 동일 범주 내 연산으로 합성함수(`x => f(g(x))`)가 주어졌을 경우, 그 결과는 `u['fantasy-land/map'](g)`로 반환된 펑터에 `['fantasy-land/map'](f)`를 전달한 것과 같다는 의미이다. 곧, `R.map(x => f(g(x)), u)`는 자바스크립트 배열에 대해 `R.pipe(R.map(x => g(x)), R.map(x => f(x)))(u)`와 같아야 한다는 것을 의미한다.
