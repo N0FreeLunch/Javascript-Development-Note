@@ -12,10 +12,20 @@
 
 ### 타입과 인터페이스의 차이점
 
-#### 클래스의 사양을 정하는데 사용 가능하다
+#### 인터페이스는 클래스의 사양을 정하는데 사용 가능하다
 
 클래스를 정의할 때 사양을 정하기 위해서 사용 가능하다. 구현된 클래스는 특별한 타입 키워드 없이 클래스 자체로 타입으로 사용될 수 있기 때문에 클래스를 위한 타입을 따로 작성하여 사용하지 않아도 된다는 장점이 있다.
 
 #### 인터페이스는 인터페이스를 확장할 수 있다.
 
 인터페이스를 정의할 때 다른 인터페이스를 가져와 구현될 오브젝트가 가져야 하는 퍼블릭 멤버를 기존 인터페이스를 이용해 확장된 인터페이스를 정의할 수 있다.
+
+#### 인터페이스는 오브젝트 클래스의 구현이나 오브젝트에만 사용된다.
+
+타입이 여러 원시 타입과 오브젝트와 같은 구조적 타입 그리고 복합 타입을 정의할 수 있는 것에 반해 인터페이스는 오브젝트의 구조적 타입을 정의하는데만 사용할 수 있다는 제한이 있다.
+
+### 타입스크립트 공식 문서의 제안
+
+> For the most part, you can choose based on personal preference, and TypeScript will tell you if it needs something to be the other kind of declaration. If you would like a heuristic, use interface until you need to use features from type.
+
+> 대부분의 경우 개인적 선호에 따라 인터페이스와 타입 중에서 선택할 수 있으며, 필요하다면 TypeScript가 다른 선택을 제안할 것입니다. 잘 모르겠다면, 우선 interface를 사용하고 이후 문제가 발생하였을 때 type을 사용하기 바랍니다.
