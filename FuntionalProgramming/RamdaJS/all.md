@@ -13,9 +13,11 @@
 
 ## 문법
 ```
-R.all(predicate, list): Boolean
+R.all(fn: (T) => Boolean, list: array<T>): Boolean
 ```
-- predicate는 술어 함수를 의미하며, 대상의 참 거짓을 판별할 때 사용한다. predicate 부분에는 리스트 원소의 참 거짓을 판별할 수 있는 콜백함수를 정의한다.
+- predicate: The predicate function.
+- list: The array to consider.
+- Returns Boolean `true` if the predicate is satisfied by every element, `false` otherwise.
 
 ## 표현
 ```
@@ -37,3 +39,5 @@ R.all(equals3)([3, 3, 1, 3]); //=> false
 
 ## Reference
 - https://ramdajs.com/docs/#all
+- https://github.com/ramda/ramda/blob/master/test/all.js
+- https://github.com/ramda/types/blob/develop/types/all.d.ts
