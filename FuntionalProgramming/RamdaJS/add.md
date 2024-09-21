@@ -29,3 +29,5 @@ R.add(7)(10);      //=> 17
 
 ## Reference
 - https://ramdajs.com/docs/#add
+- https://github.com/ramda/ramda/blob/master/test/add.js
+- https://github.com/ramda/types/blob/develop/types/add.d.ts
