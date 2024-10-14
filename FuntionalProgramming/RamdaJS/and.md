@@ -6,7 +6,8 @@
 > See also both, or.
 
 ## 설명
-- 두 인자를 받아서 첫 번째 인자를 불리언 타입으로 자동형변환한 값이 참이면 첫 번째 인자를 반환하고 거짓이면 두 번째 인자를 반환한다.
+- 두 인자를 받아서 첫 번째 인자를 불리언 타입으로 형변환 한 값이 참이면 첫 번째 인자를 반환하고, 첫 번째 인자의 불리언 형변환 값이 거짓이면 두 번째 인자의 불리언 형변환 값이 참일 때 두 번째 값을 반환하고 그렇지 않으면 거짓을 반환한다.
+- 논리 연산의 and가 참인지 거짓인지를 판별하는 것에 반해, 프로그래밍 언어에서 `&&` 연산자는 앞의 값이 truely이면 앞의 값을 반환하고, 앞의 값이 falsy이고 뒤의 값이 truely 이면 뒤의 값을 반환한다.
 
 ## 문법
 ```
@@ -23,7 +24,7 @@ a → b → a | b
 - `→ a | b` a 또는 b 인자를 반환한다.
 
 ## 예제
-```
+```js
 R.and(true, true); //=> true
 R.and(true, false); //=> false
 R.and(false, true); //=> false
@@ -33,3 +34,6 @@ R.and(false, false); //=> false
 
 ## Reference
 - https://ramdajs.com/docs/#and
+- https://github.com/ramda/ramda/blob/master/test/and.js
+- https://github.com/ramda/types/blob/develop/types/and.d.ts
+
