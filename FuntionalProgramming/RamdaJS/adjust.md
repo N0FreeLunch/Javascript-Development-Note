@@ -9,8 +9,12 @@
 
 ## 문법
 ```
-R.adjust(index: number, fn, list): Array
+R.adjus(idx, fn, list): Array
 ```
+- idx: The index.
+- fn: The function to apply.
+- list: An array-like object whose value at the supplied index will be replaced.
+- Returns Array A copy of the supplied array-like object with the element at index `idx` replaced with the value returned by applying `fn` to the existing element.
 
 ## 표현
 ```
@@ -31,3 +35,5 @@ R.adjust(-1, R.toUpper, ['a', 'b', 'c', 'd']);     //=> ['a', 'b', 'c', 'D']
 
 ## Reference
 - https://ramdajs.com/docs/#adjust
+- https://github.com/ramda/ramda/blob/master/test/adjust.js
+- https://github.com/ramda/types/blob/develop/types/adjust.d.ts
