@@ -1,15 +1,18 @@
 ## ap
+
 > ap applies a list of functions to a list of values.
 - 값을 나열한 리스트를 받아서 함수를 원소로 하는 리스트를 적용한다.
 
 > Dispatches to the ap method of the second argument, if present. Also treats curried functions as applicatives.
 
-
 ## 설명
+
 - applies 라는 뜻을 가진 함수이다.
 - 먼저 인자를 넣었을 때 반환 되는 구조를 입력하고 구조의 일부에 해당하는 인자를 넣었을 때, 설정된 구조에 따라서 결과를 반환하는 함수이다.
+- 함수 리스트와 값 리스트를 받아서 값 리스트의 대상을 함수 리스트 각각에 전달하여 얻은 결과를 모두 합친 배열을 반환한다.
 
 ## 표현
+
 ### 배열을 인자로 사용할 때
 ```
 [a → b] → [a] → [b]
@@ -24,9 +27,9 @@
 ```
 Apply f => f (a → b) → f a → f b
 ```
-- `f`는 커링된 함수를 의미한다. 인자를 하나 받으면 평가될 수 있는 함수를 의미한다. 
+- `Apply f => ` `f`는 fantasy-land의 [apply](https://github.com/fantasyland/fantasy-land?tab=readme-ov-file#apply)의 사양을 만족하는 대상이다.
 - `Apply f`는 `R.ap()` 함수의 첫번째 인자로 커링된 함수를 받는다는 의미이다.
-- `=> f (a → b)`는 `R.ap()`의 첫 번째로 받은 함수 f에 두 번째로 받은 인자인 `a → b` 함수를 인자로 집어 넣는다.
+- `=> f (a → b)`는 인자를 하나 받으면 평가될 수 있는 함수인 `a -> b`를 인자로 받는 함수로 `R.ap()`의 첫 번째로 받은 함수 f에 두 번째로 받은 인자인 `a → b` 함수를 인자로 집어 넣는다.
 - 이로 인해 반환된 함수는 설정된 `a → b` 규약에 따라 a를 내포한 함수 `f a`를 인자로 받았을 경우 b를 내포한 함수 f b`를 반환한다.
 
 ### ???
@@ -38,14 +41,14 @@ Apply f => f (a → b) → f a → f b
 - `→ (r → b)`에서 `r`이란 인자를 받았을 때 b라는 결과값을 반환하는 함수 `(r → b)`를 만든다는 의미
 
 ## 예제
-```
+```js
 R.ap([R.multiply(2), R.add(3)], [1,2,3]); //=> [2, 4, 6, 4, 5, 6]
 ```
 - `R.multiply(2)`는 수 하나를 원소로 받아 2를 곱하는 함수이다. `R.add(3)`은 수 하나를 원소를 받아 3을 더하는 함수이다.
 - `R.ap([R.multiply(2), R.add(3)]);`에서 `[R.multiply(2), R.add(3)]` 배열 안의 함수를 두 번째 인자로 받는 `[1,2,3]`에 각각 적용한다.
 - 두 번째 인자로 받는 배열의 각 원소가 함수의 인자가 되어 `R.multiply(2)(1)`, `R.multiply(2)(2)`, `R.multiply(2)(3)`을 한 결과 `[2,4,6]`을 얻는다. `R.add(3)(1)`, `R.add(3)(2)`, `R.add(3)(3)`한 결과 `[4,5,6]`을 얻는다. 해당 결과의 합집합인 `[2, 4, 6, 4, 5, 6]`이란 결과를 얻는다.
 
-```
+```js
 R.ap([R.concat('tasty '), R.toUpper], ['pizza', 'salad']); //=> ["tasty pizza", "tasty salad", "PIZZA", "SALAD"]
 ```
 - 배열을 첫번째 인자로 받기 때문에 두 번째 인자도 배열로 받는다.
@@ -53,7 +56,7 @@ R.ap([R.concat('tasty '), R.toUpper], ['pizza', 'salad']); //=> ["tasty pizza", 
 - `R.toUpper`는 주어진 문자열 하나를 받아서 소문자를 대문자로 바꾼다.
 - `R.ap([R.concat('tasty '), R.toUpper], ['pizza', 'salad']);`에서 `R.concat('tasty ')`를 `['pizza', 'salad']`을 인자로 받아 `'tasty pizza'`, `'tasty salad'`를 만들어내고 `R.toUpper`를 `['pizza', 'salad']`에 적용하여 `"PIZZA"`, `"SALAD"`를 만들어 낸다. 해당 결과의 합집합인 `["tasty pizza", "tasty salad", "PIZZA", "SALAD"]`이란 결과를 얻는다.
 
-```
+```js
 // R.ap can also be used as S combinator
 // when only two functions are passed
 R.ap(R.concat, R.toUpper)('Ramda') //=> 'RamdaRAMDA'
@@ -68,3 +71,5 @@ R.ap(R.concat, R.toUpper)('Ramda') //=> 'RamdaRAMDA'
 ## Reference
 - https://ramdajs.com/docs/#ap
 - https://www.youtube.com/watch?v=VGo_3EH17Ew
+- https://github.com/ramda/ramda/blob/master/test/ap.js
+- https://github.com/ramda/types/blob/develop/types/ap.d.ts
