@@ -39,3 +39,6 @@ const peopleByYoungestFirst = R.sort(byAge, people);
 
 ## Reference
 - https://ramdajs.com/docs/#ascend
+- https://github.com/ramda/ramda/blob/master/test/ascend.js
+- https://github.com/ramda/types/blob/develop/types/ascend.d.ts
+
