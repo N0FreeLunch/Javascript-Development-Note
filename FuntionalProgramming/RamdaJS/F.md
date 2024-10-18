@@ -1,9 +1,8 @@
 ## F
-> A function that always returns false.
-- 항상 거짓을 반환하는 함수이다.
+> A function that always returns false. Any passed in parameters are ignored
+- 항상 거짓을 반환하는 함수이다. 파라메터로 전달된 어느 것도 무시된다.
 
-> Any passed in parameters are ignored
-- 파라메터로 전달된 어느 것도 무시된다.
+> See also [T](./T.md).
 
 ### 설명
 - 어떠한 인자를 넣든지 항상 fasle를 반환하는 함수
