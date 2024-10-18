@@ -1,11 +1,11 @@
 ## ascend
 > Makes an ascending comparator function out of a function that returns a value that can be compared with < and >.
-- 오름차순으로 정렬하기 위한 비교함수를 만든다.
+- 오름차순으로 정렬하기 위한 비교함수를 만든다. (비교기호) < 와 > 로 비교할 수 있는 값을 반환하는 함수가 비교 함수가 된다.
 
-> See also descend.
+> See also [descend](./descend.md).
 
 ## 설명
-- sort와 같은 정렬 함수의 나열 순서를 결정하기 위해 사용되는 비교함수를 만들기 위해 사용되는 함수이다. 비교함수는 두 값을 받아서 수를 반환하며, 정렬 함수는 반환된 수가 양수이면 받은 두 값의 순서를 교체하고 반환된 수가 음수이면 받은 두 값의 순서를 그대로 둔다. 이런 정렬함수의 비교함수로 오름차순의 나열을 하기 위해서 두 수를 받아 나중에 받은 값에서 먼저 받은 값을 뺀 결과값을 반환한다.
+- sort와 같은 정렬 함수의 나열 순서를 결정하기 위해 사용되는 비교 함수(comparator functio)를 만들기 위해 사용되는 함수이다. 비교함수는 두 값을 받아서 수를 반환하며, 정렬 함수는 반환된 수가 양수이면 받은 두 값의 순서를 교체하고 반환된 수가 음수이면 받은 두 값의 순서를 그대로 둔다. 이런 정렬함수의 비교함수로 오름차순의 나열을 하기 위해서 두 수를 받아 나중에 받은 값에서 먼저 받은 값을 뺀 결과값을 반환한다.
 - ascend 함수는 오름차순을 만들기 위한 비교함수를 만들며, 함수를 하나 받아서 두 값을 받는 비교함수를 반환한다. 이 때 함수는 리스트의 요소를 전달 받았을 때 순서 비교가 가능한 값을 반환하는 함수이다.
 - ascend 함수는 총 3개의 인자를 받지만, 첫 번째 인자만 받을 경우, 두 개의 인자를 받는 비교함수가 되므로 모든 인자를 받아 평가하는 방식으로 쓰이지 않고 비교함수를 만들어 정렬 함수에 전달하는 용도로 사용한다.
 
@@ -41,4 +41,3 @@ const peopleByYoungestFirst = R.sort(byAge, people);
 - https://ramdajs.com/docs/#ascend
 - https://github.com/ramda/ramda/blob/master/test/ascend.js
 - https://github.com/ramda/types/blob/develop/types/ascend.d.ts
-
