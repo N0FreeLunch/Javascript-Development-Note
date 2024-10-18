@@ -9,7 +9,7 @@
 
 ### 문법
 ```
-R.T(any): Boolean
+R.T(Any): Boolean
 ```
 - Returns Boolean
 
