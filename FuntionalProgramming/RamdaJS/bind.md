@@ -1,19 +1,32 @@
 ## bind
-- R.bind()
 > Creates a function that is bound to a context. 
 - 컨텍스트의 무언가를 바인딩하고 있는 함수를 생성한다.
-> Note: R.bind does not provide the additional argument-binding capabilities of Function.prototype.bind.
-- 자바스크립트 문법의 `Function.prototype.bind`와 달리 `R.bind`는 추가적인 인자를 바인딩하지 않는다.
 
-## 표현
+> Note: R.bind does not provide the additional argument-binding capabilities of [Function.prototype.bind](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind).
+- 자바스크립트 문법의 [`Function.prototype.bind`](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Function/bind)와 달리 `R.bind`는 추가적인 인자를 바인딩하지 않는다.
+
+> See also [partial](./partial.md).
+
+### 설명
+
+### 문법
+```
+R.bind(fn, thisObj): function
+```
+- fn: The function to bind to context
+- thisObj: The context to bind fn to
+- Returns function A function that will execute in the context of `thisObj`.
+
+### 표현
 ```
 (* → *) → {*} → (* → *)
 ```
+- `(* → *) →`:
+- `→ {*} →`:
+- `→ (* → *)`: 
 
-## 설명
-
-## 예제
-```
+### 예제
+```js
 const log = R.bind(console.log, console);
 R.pipe(R.assoc('a', 2), R.tap(log), R.assoc('a', 3))({a: 1}); //=> {a: 3}
 // logs {a: 2}
@@ -26,3 +39,5 @@ R.pipe(R.assoc('a', 2), R.tap(log), R.assoc('a', 3))({a: 1}); //=> {a: 3}
 
 ## Reference
 - https://ramdajs.com/docs/#bind
+- https://github.com/ramda/ramda/blob/master/test/bind.js
+- https://github.com/ramda/types/blob/develop/types/bind.d.ts
