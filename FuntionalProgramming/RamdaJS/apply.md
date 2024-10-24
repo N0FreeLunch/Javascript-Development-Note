@@ -2,7 +2,7 @@
 - Applies function fn to the argument list args. This is useful for creating a fixed-arity function from a variadic function. fn should be a bound function if context is significant.
 - 함수 fn에 인자 리스트 args를 적용한다. 가변 인자를 갖는 함수에서 인자의 갯수를 고정한 함수를 생성하는데 유용하다. 컨텍스트가 중요한 경우 fn은 바인딩된 함수여야 한다.
 
-> See also call, unapply.
+> See also [call](./call.md), [unapply](./unapply.md).
 
 ### 설명
 - 어떤 함수의 배열에 나열한 값을 각각의 인자로 할당하고자 할 때 사용하는 함수이다.
@@ -34,7 +34,7 @@ const nums = [1, 2, 3, -99, 42, 6, 7];
 R.apply(Math.max, nums); //=> 42
 ```
 - 먼저 max 함수를 살펴보면
-```
+```js
 console.log(Math.max(1, 3, 2));
 // expected output: 3
 
