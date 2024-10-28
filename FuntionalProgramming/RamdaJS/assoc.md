@@ -7,7 +7,7 @@
 - 주어진 값으로 지정한 프로퍼티를 세팅(새롭게 추가)하거나 기존 프로퍼티 값을 오버라이딩한다.
 
 > Note that this copies and flattens prototype properties onto the new object as well.
-- 반환되는 새 오브젝트는 프로토타입 프로퍼티도 새 오브젝트에 복사 및 병합(flattens)되어 있다.
+- 반환되는 새 오브젝트는 프로토타입 프로퍼티도 새 오브젝트에 복사 및 평탄화(flattens: 계층 구조를 최상위 래밸로 변형)되어 있다.
 
 > All non-primitive properties are copied by reference.
 - 프리미티브 타입이 아닌 값을 가지는 프로퍼티는 참조값이 복사된다. (주소가 복사되고 주소가 가리키는 실제 값이 복사되지 않는다.)
