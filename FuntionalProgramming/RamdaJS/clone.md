@@ -44,7 +44,7 @@ objects[0] === objectsClone[0]; //=> false
 - `objects === objectsClone` 두 객체가 동일한지 확인하더라도 `false`를 반환하므로 서로 다른 객체이다.
 - `objects[0] === objectsClone[0]` 두 객체의 참조 대상인 배열의 첫 번째 오브잭트 `{}` 또한 복사가 되었기 때문에 두 객체는 일치하지 않는다. 따라서 `false`를 반환한다.
 
-### Reference
+### References
 - https://ramdajs.com/docs/#clone
 - https://github.com/ramda/ramda/blob/master/test/clone.js
 - https://github.com/ramda/types/blob/develop/types/clone.d.ts
