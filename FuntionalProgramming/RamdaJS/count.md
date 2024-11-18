@@ -13,14 +13,8 @@
 ### 문법
 
 ```
-R.count(f, list): Int
+R.count(f, list): Number
 ```
-> `f`: predicate
-- `f`: 술어함수
-> `list`: to match items against
-- `list`: (술어함수에) 매칭할 아이템들
-> Returns Array list of items to count in
-- 정수인 카운트 된 수를 반환해야 하는데, 배열을 반환한다고 설명이 잘못 되어 있음
 
 ### 표현
 
