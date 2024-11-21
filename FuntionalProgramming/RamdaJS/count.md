@@ -15,6 +15,12 @@
 ```
 R.count(f, list): Number
 ```
+> `f`: predicate to match items against
+- `f`: (리스트의) 아이템을 매칭하기 위하 술어함수
+> `list`: The list to count elements from
+- `list`: (리스트의 매칭되는) 원소의 수를 카운트하기 위한 리스트
+> Return Number the count of items matching the predicate
+- 술어함수에 매칭되는 아이템의 수를 Number으로 반환 한다.
 
 ### 표현
 
