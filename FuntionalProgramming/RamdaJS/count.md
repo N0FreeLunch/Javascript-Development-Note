@@ -33,7 +33,7 @@ R.count(f, list): Number
 
 ### 예제
 
-```
+```js
 const even = x => x % 2 == 0;
 
 R.count(even, [1, 2, 3, 4, 5]); // => 2
