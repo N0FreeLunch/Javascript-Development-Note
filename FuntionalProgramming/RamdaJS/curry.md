@@ -1,4 +1,5 @@
 ## Curry
+
 > Returns a curried equivalent of the provided function. 
 - 제공된 함수의 역할을 대신할 수 있는 커리된 함수를 반환한다.
 > The curried function has two unusual capabilities. 
@@ -26,22 +27,31 @@
 > - g(_, 2)(1, 3)
 > - g(_, 2)(_, 3)(1)
 
-## 표현
+### 문법
 ```
-(* → a) → (* → a)
+R.Curry(fn): A
 ```
-- `(* → a) →` 여러 종류의 타입과 갯수의 인자를 받는 함수를 첫 번째 인자로 받는다.
-- `→ (* → a)` 여러 종류의 타입과 개수의 인자를 받는 함수를 반환한다.
+> `fn`: The function to curry.
+- `fn`: 커링할 함수를 받는다.
+> Returns function A new, curried function.
+- 새로운 함수 A를 반환한다. 이 함수는 커링되어 있다.
 
-## 설명
+### 설명
 - 함수의 인자를 여러 차례 나눠 받을 수 있는 함수로 만든다.
 - 커링된 함수는 원본 함수가 받는 인자를 다 채우지 못할 경우 인자를 더 받을 수 있는 함수를 만든다.
 - 커링된 함수는 원본 함수가 받아야 할 인자를 다 받을 경우 함수를 반환하지 않고 평가된 결과를 반환한다.
 - 함수가 커링될 때 원본 함수를 변경하지 않고 커링된 새로운 함수를 만든다.
 - 커링 된 함수가 원본 함수가 받아야 할 인자를 다 받지 못하게 되는 경우, 추가로 인자를 받을 수 있는 새로운 함수를 반환한다.
 
-## 예제
+### 표현
 ```
+(* → a) → (* → a)
+```
+- `(* → a) →`: 여러 종류의 타입과 갯수의 인자를 받는 함수를 첫 번째 인자로 받는다.
+- `→ (* → a)`: 여러 종류의 타입과 개수의 인자를 받는 함수를 반환한다. 반환된 함수는 커링되어 있어 원본 함수의 평가가 완료될 때 까지 필요한 인자까지 일부의 인자만 받아 반환된 함수에 다른 인자를 넣어 평가할 수 있다.
+
+### 예제
+```js
 const addFourNumbers = (a, b, c, d) => a + b + c + d;
 
 const curriedAddFourNumbers = R.curry(addFourNumbers);
@@ -55,5 +65,7 @@ g(4); //=> 10
 - `R.curry`를 사용하면 추가로 받아야 할 인자를 하나씩 받을 수 있으며 원래 받아야 할 인자인 4개의 인자가 채워지지 않으면 추가로 인자를 받을 수 있는 새로운 함수를 반환한다.
 - `f(3)`은 총 4개 받아야 하는 인자 중 3개를 받은 형태이며 함수 `g`는 마지막 인자를 받는 함수가 된다.
 
-## Reference
+## References
 - https://ramdajs.com/docs/#curry
+- https://github.com/ramda/ramda/blob/master/test/countBy.js
+- https://github.com/ramda/types/blob/develop/types/countBy.d.ts
