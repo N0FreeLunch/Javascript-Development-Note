@@ -1,22 +1,35 @@
 ## construct
+
 > Wraps a constructor function inside a curried function that can be called with the same arguments and returns the same type.
-- 내부적으로 커링된 함수로 생성자 함수를 감싼다. 생성자 함수를 레핑한 커링된 함수는 생성자 함수와 동일한 인자와 동일한 리턴 타입을 가진 함수로써 호출된다.
+- 생성자 함수를 커링된 함수로 감싼다. 레핑된 함수는 생성자 함수와 동일한 인자와 리턴 타입을 가진 함수로써 호출된다.
+> See also [invoker](./invoker.md).
 
-> See also invoker.
+### 설명
 
-## 설명
-- 자바스크립트에서 `function` 키워드로 만든 함수는 오브젝트에 해당한다. 이 함수 내부에 오브젝트의 내부의 멤버를 `this.멤버`형식으로 키워드롤 만들 수 있는데 이를 통해서 오브젝트의 멤버의 초기 값을 설정할 수 있다. 이를 `new 함수명`을 통해서 객체를 찍어내는 것이 아니라 `construct` 함수로 객체를 생성하는 함수를 감싸서 객체를 찍어낼 수 있도록 한다.
+- 자바스크립트에서 `function` 키워드로 만든 함수는 오브젝트에 해당한다. 이 함수 내부({} 안에)에 오브젝트의 내부의 멤버를 `this.멤버`형식으로 키워드롤 만들 수 있는데 이를 통해서 오브젝트의 멤버의 초기 값을 설정할 수 있다. 이를 `new 함수명`을 통해서 객체를 찍어내는 것이 아니라 `construct` 함수로 객체를 생성하는 함수를 감싸서 객체를 찍어낼 수 있도록 한다.
 - `new 함수명(인자들...)`에서 인자를 한꺼번에 다 받아야 하는 반면에 `construct` 함수로 레핑된 함수는 커링되어 있기 때문에 인자를 분리해서 받을 수 있다.
 
-## 표현
+### 문법
+
+```
+R.construct(fn): function
+```
+> `fn`: The constructor function to wrap.
+- `fn`: 레핑할 생성자 함수
+> Returns function. A wrapped, curried constructor function.
+- 함수를 반환한다. 이 함수는 생성자 함수가 레핑되고 커링된 것이다.
+
+### 표현
+
 ```
 (* → {*}) → (* → {*})
 ```
-- `(* → {*}) →` 첫 번째 인자로 인자를 받아서 객체를 반환하는 함수를 받는다.
-- 반환된 함수 `→ (* → {*})`는 동일하게 인자를 받아서 객체를 반환하는 함수이다. 표현식으로는 동일하지만 첫 번째 인자로 받은 함수가 `new`를 통해서 새로운 객체를 생성해야 하는 것과 달리 함수의 호출로 새로운 객체를 생성할 수 있으며, 함수가 커링되어 있으므로 인자를 나누어 받을 수 있다.
+- `(* → {*}) →`: 첫 번째 인자로 함수를 받는다. 이 함수는 임의의 인자를 받아서 임의의 인자(`{*}`)를 반환하는 함수를 받는다.
+- `→ (* → {*})`: 반환된 함수는 동일하게 인자를 받아서 동일한 결과를 반환하는 함수이다. 표현식으로는 동일하지만 첫 번째 인자로 받은 함수가 `new`를 통해서 새로운 객체를 생성해야 하는 것과 달리 함수의 호출로 새로운 객체를 생성할 수 있으며, 함수가 커링되어 있으므로 인자를 나누어 받을 수 있다.
 
-## 예제
-```
+### 예제
+
+```js
 // Constructor function
 function Animal(kind) {
   this.kind = kind;
@@ -72,5 +85,7 @@ R.map(sightNewAnimal, animalTypes); //=> ["It's a Lion!", "It's a Tiger!", "It's
 ```
 - 주어진 `animalTypes`의 각각에 해당하는 생성자를 할당하여 객체를 생성하고 해당 객체에서 `sighting` 함수를 실행한 결과를 리스트 형태로 반환한다.
 
-## Reference
+## References
 - https://ramdajs.com/docs/#construct
+- https://github.com/ramda/ramda/blob/master/test/construct.js
+- https://github.com/ramda/types/blob/develop/types/construct.d.ts
