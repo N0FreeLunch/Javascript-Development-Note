@@ -1,4 +1,5 @@
 ## curryN
+
 > Returns a curried equivalent of the provided function, with the specified arity. The curried function has two unusual capabilities. First, its arguments needn't be provided one at a time. If `g` is `R.curryN(3, f)`, the following are equivalent:
 > - g(1)(2)(3)
 > - g(1)(2, 3)
@@ -14,7 +15,25 @@
 > - g(_, 2)(1, 3)
 > - g(_, 2)(_, 3)(1)
 
-## 표현
+### 설명
+
+- `R.curry` 함수가 고정된 수의 인자를 받는 함수에 적용되어 고정된 수의 인자의 수가 다 차면 평가 되는 것과 달리 `R.curryN`은 가변 인자를 받는 함수에 적용되어 지정한 수의 인자를 받으면 함수를 평가하는 방식으로 되어 있다.
+
+### 문법
+
+```
+R.curryN(length, fn): function
+```
+
+> `length`: The arity for the returned function.
+- `length`: 반환된 함수의 인자의 수 (arity).
+> `fn`: The function to curry.
+- `fn`: 커링할 대상 함수
+> Returns function A new, curried function.
+- 새로운 커링된 함수를 반환한다.
+
+### 표현
+
 ```
 Number → (* → a) → (* → a)
 ```
@@ -22,12 +41,9 @@ Number → (* → a) → (* → a)
 - ` → (* → a) →` 커링할 함수를 지정하면
 - `→ (* → a)` 커링된 함수가 반환 된다.
 
-## 설명
-- `R.curry` 함수가 고정된 수의 인자를 받는 함수에 적용되어 고정된 수의 인자의 수가 다 차면 평가 되는 것과 달리 `R.curryN`은 가변 인자를 받는 함수에 적용되어 지정한 수의 인자를 받으면 함수를 평가하는 방식으로 되어 있다.
+### 예제
 
-
-## 예제
-```
+```js
 const sumArgs = (...args) => R.sum(args);
 
 const curriedAddFourNumbers = R.curryN(4, sumArgs);
@@ -41,5 +57,7 @@ g(4); //=> 10
 - `curriedAddFourNumbers(1, 2)`에서 인자를 두 개 할당, `f(3)`에서 인자를 하나 할당, `g(4)`에서 인자를 하나의 인자를 할당하여 총 4개의 인자를 할당하고 나서 함수 내부의 `R.sum(args)`를 평가한 결과를 반환한다.
 
 
-## Reference
+### References
 - https://ramdajs.com/docs/#curryN
+- https://github.com/ramda/ramda/blob/master/test/curryN.js
+- https://github.com/ramda/types/blob/develop/types/curryN.d.ts
