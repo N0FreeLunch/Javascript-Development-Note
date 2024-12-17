@@ -10,6 +10,17 @@
 - 첫 번째 인자로 배열을 받고 두 번째 인자로 배열을 받아서 첫 번째 인자의 배열에서 두 번째 인자의 배열에 속한 원소를 모두 제외하고 남는 원소로 이뤄진 배열을 반환한다.
 - 배열의 원소로는 동일한 형태의 오브젝트도 제외할 수 있다.
 
+### 문법
+```
+R.difference(list1: Array, list2: Array): Array
+```
+> `list1`: The first list.
+- `list1`: 첫 번째 리스트
+> `list2`: The second list.
+- `list2`: 두 번째 리스트
+> Returns Array The elements in `list1` that are not in `list2`.
+- `list1`에는 속하지만, `list2`에는 속하지 않는 원소들의 배열을 반환한다.
+
 ### 표현
 ```
 [*] → [*] → [*]
