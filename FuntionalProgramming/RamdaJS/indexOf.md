@@ -2,8 +2,6 @@
 > Returns the position of the first occurrence of an item in an array, or -1 if the item is not included in the array. R.equals is used to determine equality.
 - 어떤 배열에 속한 아이템 중에서 첫번째로 나타난 아이템의 위치를 반환한다. 또는 해당 배열에 (찾고자 하는) 아이템이 포함되어 있지 않다면 -1을 반환한다. R.equals는 (찾고자 하는 원소와 배열에 포함된 원소의) 동등성을 결정하는데 사용한다.
 
-열에서 항목이 처음 나타나는 위치를 반환하거나 항목이 배열에 포함되지 않은 경우 -1을 반환합니다. R.equals는 동등성을 결정하는 데 사용됩니다.
-
 ## 설명
 - 첫 번째 인자로 찾을 값을 지정하고
 - 두 번째 인자로 배열을 지정한다.
