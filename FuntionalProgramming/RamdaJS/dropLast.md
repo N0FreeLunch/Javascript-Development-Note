@@ -1,7 +1,7 @@
 # dropLast
 
 > Returns a list containing all but the last n elements of the given list.
-주어진 리스트에서 마지막 n개의 원소를 제외한 모든 것이 포함된 리스트를 반환한다.
+- 주어진 리스트에서 마지막 n개의 원소를 제외한 모든 것이 포함된 리스트를 반환한다.
 > Acts as a transducer if a transformer is given in list position.
 - 만약 리스트 위치에 변형기가 전달되었다면 변환기로서 작동한다.
 > See also takeLast, [drop](./drop.md), [dropWhile](./dropWhile.md), [dropLastWhile](./dropWhile.md).
