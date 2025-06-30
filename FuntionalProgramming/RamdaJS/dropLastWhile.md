@@ -1,10 +1,14 @@
 ## dropLastWhile
 > Returns a new list excluding all the tailing elements of a given list which satisfy the supplied predicate function.
+- 주어진 리스트에서 제공된 술어 함수를 만족하는 모든 꼬리쪽 원소를 제외한 새로운 리스트를 반환한다.
 > It passes each value from the right to the supplied predicate function, skipping elements until the predicate function returns a falsy value.
+- 오른쪽(리스트의 뒤쪽에서)에서 각 값을 제공된 술어 함수에 전달하고, 술어함수가 거짓 값을 반환할 제공된 술어함수가 falsy 값을 반환할 때까지 원소를 건너뛴다.
 > The predicate function is applied to one argument: (value).
+- 이 술어 함수는 하나의 인자(여기서는 value)만을 적용한다.
 > Acts as a transducer if a transformer is given in list position.
 
 ## 설명
+- 리스트의 뒤에서 부터 차례로 원소를 술어함수에 전달하며, 술어함수를 처음 참으로 만들 때까지 원소를 전달한다. 이 때 술어함수를 거짓으로 만드는 원소를 제거한 리스트를 반환한다.
 - 첫 번째 인자로 하나의 인자를 받는 술어 함수를 받는다.
 - 두 번째 인자로 배열 또는 문자열을 받는다.
 - 두 번째 인자로 받은 배열 또는 문자열의 뒤의 원소부터 차례로 첫 번째 인자에 할당한 술어함수의 인자에 넣어 평가하여 거짓이 나올 때 까지 계속한다.
@@ -15,10 +19,11 @@
 R.dropLastWhile(predicate, xs): Array
 ```
 - `predicate`: The function to be called on each element
-
+- `predicate`: 각 원소를 호출하는 함수
 - `xs`: The collection to iterate over.
-
+- `xs`: 순회할 컬렉션
 - Returns Array A new array without any trailing elements that return `falsy` values from the `predicate`.
+- 새로운 배열을 반환한다. 이 배열은 `predicate` 술어함수의 값을 `falsy`로 반환하는 어떠한 값도 꼬리 부분에 갖지 않는다.
 
 
 ## 표현
