@@ -1,3 +1,11 @@
+# null
+
+자바스크립트에는 null과 undefined의 두 가지 값이 할당되지 않은 상태가 존재한다. 어떤 값이 할당된 값인지 아닌 값인지 구분하는 대상이 2가지 존재하는데 무엇을 사용해야 하는지 결정하기 어려운 경우가 많다.
+
+기본적으로 null은 사용자가 의도한 할당되지 않은 값을 의미하고, undefined는 사용자가 의도하지 않은 유효하지 않은 값을 나타낸다.
+
+그래서 선언되지 않은 변수나, 존재하지 않는 프로퍼티에 접근을 할 때는 undefined가, 사용자가 준비해 둔 변수의 초기값으로 비할당 상태를 만들고자 할 때는 null을 사용한다.
+
 ## Object 객체
 
 거의 대부분의 자바스크립트 객체는 자바스크립트의 [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object) 객체를 주형으로 하고, 이를 프로토타입으로 두는 구조를 갖고 있다.
