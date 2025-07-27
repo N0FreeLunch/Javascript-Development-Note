@@ -4,9 +4,11 @@
 > It passes each value to the supplied predicate function, skipping elements while the predicate function returns true.
 - 주어진 술어 함수에 (순회에 따른 원소인) 각각의 값을 전달하고, 순회 합수가 true를 반환할 때까지 계속된다.
 > The predicate function is applied to one argument: (value).
+- 술어 함수는 하나의 인자만 지원한다. 술어 함수(로 전달되는) 인자를 value라고 하자.
 > Dispatches to the dropWhile method of the second argument, if present.
-
+- 두 번째 인자의 (원소에) dropWhile이란 메소드가 있으면 dropWhile 메소드를 실행한다.
 > Acts as a transducer if a transformer is given in list position.
+- 변형기가 리스트 위치에 주어지면, 변환기로 동작한다.
 
 ## 설명
 
@@ -49,8 +51,7 @@ R.dropWhile(x => x !== 'd' , 'Ramda'); //=> 'da'
 - 두 번째 인자는 배열을 넣고 첫 번째 원소인 1은 2이하이므로 술어 함수를 만족하므로 제거한다. 두 번째 원소인 2는 2이하이므로 술어함수를 만족하므로 제거한다. 세 번째 원소인 3은 술어함수를 만족하지 못하므로 두 번째 원소까지 제거한 결과를 반환하여 `[3, 4, 3, 2, 1]`가 된다.
 - `R.dropWhile(x => x !== 'd' , 'Ramda')`는 d가 나올 때까지 d 앞의 원소를 제거하므로 `da`가 반환된다.
 
-
-## Reference
+## References
 - https://ramdajs.com/docs/#dropWhile
 - https://github.com/ramda/ramda/blob/master/test/dropWhile.js
 - https://github.com/ramda/types/blob/develop/types/dropWhile.d.ts
