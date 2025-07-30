@@ -35,7 +35,7 @@ R.dropWhile(fn, xs): Array
 - `fn`: 순회의 반복마다 호출되는 함수
 > `xs`: The collection to iterate over.
 - `xs`: 순회할 콜렉션
-- Returns Array A new array.
+> Returns Array A new array.
 - 새로운 배열을 반환한다.
 
 ## 예제
