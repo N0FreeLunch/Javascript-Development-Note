@@ -1,34 +1,37 @@
 ## evolve
+
 > Creates a new object by recursively evolving a shallow copy of object, according to the transformation functions.
-
+- 오브젝트의 얕은 복사를 재귀적으로 진행하는 것을 통해서 새로운 오즈젝트를 생성한다. (재귀적으로 복사하는 과정은) 변형(transformation) 함수를 따른다.
 > All non-primitive properties are copied by reference.
-
+- 원시 타입이 아닌 모든 프로퍼티는 참조에 의해 복사된다.
 > A transformation function will not be invoked if its corresponding key does not exist in the evolved object.
+- 만약 일치하는 키가 적용되는 오브젝트에 존재하지 않는다면 변형(transformation) 함수는 호출되지 않는다.
 
 ## 설명
 
-- 첫 번째 인자로 프로퍼티의 값을 변환할 함수를 정의한 오브젝트를 받는다.
-- 두 번째 인자로 오브젝트를 받는다.
-- 첫 번째 인자에 지정한 오브젝트가 가진 프로퍼티와 동일한 키를 가진 프로퍼티가 두 번째 오브젝트에 있다면 첫 번째 인자의 오브젝트의 동일한 키의 프로퍼티에 할당된 함수의 인자에 값을 넣고 평가된 결과 값을 해당 프로퍼티의 벨류로 갖는 오브젝트를 반환한다.
-- 첫 번째 안자로 받은 오브젝트의 프로퍼티의 벨류가 오브젝트인 경우 해당 오브젝트의 내부의 프로퍼티에 변환할 함수를 정의하고 두 번째 인자로 반든 오브젝트에서 동일한 프로퍼티의 프로퍼티에 할당된 벨류를 변환할 함수의 인자로 할당하여 평가된 결과 값을 넣어 반환된다. 같은 방식으로 중첩된 오브젝트에 계속 적용된다.
+- 오브젝트의 프로퍼티가 특수한 변형 공식의 함수를 담는 변형 공식 오브젝트를 통해서, 대상 오브젝트의 프로퍼티를 이 프로퍼티와 일치하는 변형 공식 오브젝트의 변형 함수에 전달하여 프로퍼티의 값이 변경된 새로운 오브젝트를 생성한다.
+- 첫 번째 인자로 POJO(Plain Old JavaScript Object, 플레인 오브젝트)에 프로퍼티명과 프로퍼티의 값으로 값을 변형하는 함수를 정의한 오브젝트를 받는다.
+- 두 번째 인자로 첫 번째 오브젝트의 변형 공식을 적용할 오브젝트를 받는다.
+- 첫 번째 인자에 지정한 오브젝트가 가진 프로퍼티와 동일한 키를 가진 프로퍼티가 두 번째 오브젝트에 있다면 첫 번째 인자의 오브젝트의 동일한 키의 프로퍼티 값에 첫 번째 인자로 받은 오브젝트의 프로퍼티에 할당된 변형 함수를 적용한 결과를 해당 프로퍼티의 벨류로 갖는 오브젝트를 반환한다.
+- 첫 번째 인자로 받은 오브젝트의 프로퍼티의 벨류가 오브젝트인 경우 이 오브젝트의 내부의 프로퍼티에 변환할 함수를 정의하고 두 번째 인자로 반든 오브젝트에서 동일한 프로퍼티 값인 오브젝트의 내부의 프로퍼티에 할당된 값을 변형 함수의 함수의 인자로 하여 평가된 결과 값을 넣어 반환된다. 같은 방식으로 중첩된 오브젝트에 계속 적용된다.
 
 ## 문법
 ```
 R.evolve(transformations, object): Object
 ```
 > `transformations`: The object specifying transformation functions to apply to the object.
-- `transformations`: 
+- `transformations`: 대상 오브젝트에 적용할 변형 함수들을 지정한 오브젝트
 > `object`: The object to be transformed.
-- `object`: 
+- `object`: 변형이 적용되는 대상 오브젝트
 > Returns Object The transformed object.
-- 
+- 변형이 적용된 오브젝트를 반환
 
 ## 표현
 
 ```
 {k: (v → v)} → {k: v} → {k: v}
 ```
-- `{k: (v → v)} →`: 첫 번째 인자로 키에 `(v → v)` 벨류(v)를 넣었을 때 동일 타입의 결과를 반환하는 함수를 할당
+- `{k: (v → v)} →`: 첫 번째 인자로 오브젝트의 키에 `(v → v)` 벨류(v)를 넣었을 때 동일 타입의 결과를 반환하는 함수를 할당
 - `→ {k: v} → `: 두 번째 인자로 첫 번째 인자의 키를 가진 오브젝트를 할당
 - `→ {k: v}`: 첫 번째 인자에 할당된 함수 `(v → v)`에 의해 프로퍼티가 변환된 벨류를 갖는 오브젝트를 반환
 
@@ -43,7 +46,8 @@ const transformations = {
 };
 R.evolve(transformations, tomato); //=> {firstName: 'Tomato', data: {elapsed: 101, remaining: 1399}, id:123}
 ```
-- `transformations`를 보면 `firstName` 프로퍼티의 벨류는 `R.trim` 함수로 변경하고 `lastName` 프로퍼티의 벨류는 `R.trim` 함수로 으로 변경하고 `data` 프로퍼티에 할당된 오브젝트의 `elapsed` 프로퍼티는 `R.add(1)` 으로 변경하고 `remaining` 프로퍼티는 `R.add(-1)`으로 변경한다.
+
+- 변형 함수 `transformations`를 보면 `firstName` 프로퍼티의 벨류는 `R.trim` 함수로 변경하고 `lastName` 프로퍼티의 벨류는 `R.trim` 함수로 으로 변경하고 `data` 프로퍼티에 할당된 오브젝트의 `elapsed` 프로퍼티는 `R.add(1)` 으로 변경하고 `remaining` 프로퍼티는 `R.add(-1)`으로 변경한다.
 - `tomato`의 `firstName` 프로퍼티는 `R.trim('  Tomato ')`의 결과 변환되고, `lastName` 프로퍼티는 없으므로 변환 대상이 아니며, data 프로퍼티 내부의 오브젝트의 `elapsed` 프로퍼티는 `R.add(1)(100)`의 결과로 변환되고 `remaining` 프로퍼티는 `R.add(-1)(100)`의 결과로 변환된다.
 
 ## References
