@@ -17,7 +17,7 @@ R.flip(fn): *
 > `fn`: The function to invoke with its first two parameters reversed.
 - `fn`: 처음 두 파라메터가 뒤바뀐 호출할 수 있는 함수를 만든다.
 > Returns * The result of invoking `fn` with its first two parameters' order reversed.
-- 어떤 타입이든 반환할 수 있다.  
+- 어떤 타입이든 반환할 수 있다. 처음 두 파라메터의 순서가 뒤바뀐 `fn`을 호출하는 결과이다.
 
 ## 표현
 ```
@@ -27,18 +27,21 @@ R.flip(fn): *
 - `(b → a → c → … → z)` 첫 번째 인자를 넣고 반환된 함수를 의미한다. 첫 번째 인자로 받은 함수와 동일하지만 첫 번째 인자와 두 번째 인자의 할당 순서가 달라져 있는 함수이다. 반환된 인자는 커링 되어 있기 때문에 인자를 하나씩 넣어서 평가할 수 있다.
 
 ## 예제
-```
+
+```js
 const mergeThree = (a, b, c) => [].concat(a, b, c);
 
 mergeThree(1, 2, 3); //=> [1, 2, 3]
 
 R.flip(mergeThree)(1, 2, 3); //=> [2, 1, 3]
 ```
+
 - `(a, b, c) => [].concat(a, b, c)`는 세 개의 인자를 받아서 빈 배열에 추가하는 함수이다.
 - [`Array.prototype.concat()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/concat) 함수는 가변인자를 받으므로 `mergeThree` 함수는 최대 3개까지 인자를 가변으로 받아서 배열의 원소로 차례로 할당한 배열을 반환하는 함수이다.
 - `R.flip`은 주어진 함수의 첫 번째 인자와 두 번째 인자를 바꿔서 할당하도록 변환해 주는 함수이다. 따라서 인자가 `1, 2, 3` 순서로 들어갔지만 `2, 1, 3` 순서로 내부의 `mergeThree` 함수에 넣어지기 때문에 함수의 평가 결과는 `[2, 1, 3]`가 된다.
 
 ## References
+
 - https://ramdajs.com/docs/#flip
 - https://github.com/ramda/ramda/blob/master/test/flip.js
 - https://github.com/ramda/types/blob/develop/types/flip.d.ts
