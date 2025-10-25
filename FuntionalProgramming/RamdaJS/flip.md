@@ -1,7 +1,7 @@
 ## flip
 
-> Returns a new function much like the supplied one, except that the first two arguments' order is reversed.
-- 주어진 함수와 거의 같은 기능의 새로운 함수를 반환한다. 단 차이가 있다면 처음 두 인자의 순서가 역순이라는 것이다.
+> Returns a new function much like the supplied one, except that the first two arguments are swapped.
+- 주어진 함수와 거의 같은 기능의 새로운 함수를 반환한다. 단 차이가 있다면 처음 두 인자의 순서가 뒤바뀐다는 것이다.
 
 ## 설명
 
@@ -14,17 +14,18 @@
 R.flip(fn): *
 ```
 
-> `fn`: The function to invoke with its first two parameters reversed.
-- `fn`: 처음 두 파라메터가 뒤바뀐 호출할 수 있는 함수를 만든다.
-> Returns * The result of invoking `fn` with its first two parameters' order reversed.
-- 어떤 타입이든 반환할 수 있다. 처음 두 파라메터의 순서가 뒤바뀐 `fn`을 호출하는 결과이다.
+> `fn`: The function to be invoked with its first two parameters swapped.
+- `fn`: 처음 두 파라메터가 뒤바뀐 (새 함수가 반환되어) 호출될 함수를 만든다.
+> Returns Function a function that calls `fn` with its first two arguments swapped.
+- 함수를 반환한다. 처음 두 파라메터가 뒤바뀐 `fn`을 호출하는 함수이다.
 
 ## 표현
+
 ```
 ((a, b, c, …) → z) → (b → a → c → … → z)
 ```
-- `((a, b, c, …) → z)` 첫 번째 인자로 여러 개의 인자를 받아 결과 값을 반환하는 함수를 받는다. 첫 번째 인자로 할당하는 함수의 인자의 갯수는 제한이 없으며 실제 할당되는 함수는 지정된 길이 또는 가변 길이의 인자를 받는 함수가 된다. 또한 인자를 하나를 받든 둘을 받든 몇개를 받든 평가가 되어 결과 값을 갖는 함수를 받는다.
-- `(b → a → c → … → z)` 첫 번째 인자를 넣고 반환된 함수를 의미한다. 첫 번째 인자로 받은 함수와 동일하지만 첫 번째 인자와 두 번째 인자의 할당 순서가 달라져 있는 함수이다. 반환된 인자는 커링 되어 있기 때문에 인자를 하나씩 넣어서 평가할 수 있다.
+- `((a, b, c, …) → z)`: 첫 번째 인자로 여러 개의 인자를 받아 결과 값을 반환하는 함수를 받는다. 첫 번째 인자로 할당하는 함수의 인자의 갯수는 제한이 없으며 실제 할당되는 함수는 지정된 길이 또는 가변 길이의 인자를 받는 함수가 된다. 또한 전달되는 함수는 처음 두 개의 인자를 제외한 나머지 인자로는 몇 개를 받아도 괜찮으며 커링 되어 있지 않아도 괜찮다.
+- `(b → a → c → … → z)`: 첫 번째 인자를 넣고 반환된 함수를 의미한다. 첫 번째 인자로 받은 함수와 동일하지만 첫 번째 인자와 두 번째 인자의 할당 순서가 달라져 있는 함수이다. 반환된 인자는 커링 되어 있기 때문에 인자를 하나씩 넣어서 평가할 수 있다.
 
 ## 예제
 
