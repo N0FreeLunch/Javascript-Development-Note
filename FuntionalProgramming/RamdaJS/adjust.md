@@ -6,7 +6,7 @@
 > When idx < -list.length || idx >= list.length, the original list is returned.
 - `idx < -list.length || idx >= list.length`인 경우, 원본 리스트가 반환된다.
 
-> See [also](./also.md) update.
+> See also [update](./also.md).
 
 ## 설명
 
