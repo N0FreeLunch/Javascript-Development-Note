@@ -47,5 +47,8 @@ R.forEachObjIndexed(printKeyConcatValue, {x: 1, y: 2});  //=> {x: 1, y: 2}
 - `(value, key) => console.log(key + ':' + value)` 벨류와 키를 받아서 이를 `console.log`로 해당 값을 콘솔 창에 표시한다.
 - `printKeyConcatValue` 첫 번째 순회엣 함수에 첫 번째 인자로 1, 두 번째 인자로 'x'를 할당하고 두 번째 순회에 첫 번째 인자로 2, 두 번째 인자로 'x'를 할당한다.
 
-## Reference
+## References
+
 - https://ramdajs.com/docs/#forEachObjIndexed
+- https://github.com/ramda/ramda/blob/master/test/forEachObjIndexed.js
+- https://github.com/ramda/types/blob/develop/types/forEachObjIndexed.d.ts
