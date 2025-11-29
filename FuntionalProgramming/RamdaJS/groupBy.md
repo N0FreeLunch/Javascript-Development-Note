@@ -1,10 +1,11 @@
 ## groupBy
 
 > Splits a list into sub-lists stored in an object, based on the result of calling a key-returning function on each element, and grouping the results according to values returned.
-
+- 어떤 리스트를 오브젝트에 저장된 서브 리스트로 분리한다. 키를 반환하는 함수에 각각의 원소들을 전달하여 호출한 결과를 베이스로 하고, 반환된 (키) 값들에 따라 결과들을 그룹화한다.
 > Dispatches to the groupBy method of the second argument, if present.
-
+- 두 번째 인자에 groupBy 메소드가 있다면 이 메소드를 실행한다. (첫 번째 인자의 `fn`을 두 번째 인자의 groupBy 메소드에 전달할 것으로 보인다.)
 > Acts as a transducer if a transformer is given in list position.
+- 만약 리스트 위치에 변형기(transformer)가 주어진다면 변환기(transducer)로서 작동한다.
 
 ## 설명
 
@@ -24,7 +25,7 @@ R.groupBy(fn, list): Object
 > `list`: The array to group
 - `list`: 그룹화 할 배열
 > Returns Object An object with the output of `fn` for keys, mapped to arrays of elements that produced that key when passed to `fn`.
-- 오브젝트를 반환한다. 
+- 오브젝트를 반환한다. `fn`의 결과 값은 (오브젝트의) 키들(을 구성하고), (각각의 키에 매핑되는) 배열은 (그룹화 할 데이터를 가진 배열의) 원소가 `fn`에 전달되었으 때의 키에 의해 생성된 (그룹화 된) 원소들을 가진(배열이 된)다. 
 
 ## 표현
 
