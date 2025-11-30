@@ -1,22 +1,44 @@
 ## groupWith
-> Takes a list and returns a list of lists where each sublist's elements are all satisfied pairwise comparison according to the provided function. Only adjacent elements are passed to the comparison function.
 
-## 표현
-```
-((a, a) → Boolean) → [a] → [[a]]
-```
-- `((a, a) → Boolean) →` 첫 번째 인자로는 동일 종류 인자를 두 개 받아서 참 거짓을 반환하는 술어함수를 받는다.
-- `→ [a] →` 두 번째 인자는 주어진 술어함수의 두 인자로 할당될 수 있는 종류의 원소로 이뤄진 배열을 받는다.
-- `→ [[a]]` 반환 값으로 연속된 두 원소가 주어진 술어함수의 인자로 할당될 때 거짓을 반환하거나 첫 번째 원소이면 새로운 배열에 넣고, 참을 반환하는 경우 기존 배열에 넣어 나열하므로 모든 원소가 배열인 배열을 반환한다.
+> Takes a list and returns a list of lists where each sublist's elements are all satisfied pairwise comparison according to the provided function.
+- 어떤 리스트를 받아, 리스트들로 이뤄진 리스트를 반환한다. 각각의 서브리스트의 원소들은 모두 제공된 함수에 의한 짝 비교를 만족한다.
+> Only adjacent elements are passed to the comparison function.
+- 비교 함수에 인접한 두 원소들 전달된다.
 
 ## 설명
+
 - `groupBy`가 주어진 함수의 반환값이 같은 것 끼리 주어진 배열의 원소들을 분류하는 것에 반해, `groupWith`는 연달아 이어지는 원소들이 주어진 술어함수를 만족하면 하나의 배열의 원소로 묶는 역할을 한다.
 - 첫 번째 인자로 술어 함수를 받는다. 이 술어 함수는 인자를 둘 받아서 참 아니면 거짓을 반환한다.
 - 두 번째 인자로 주어진 술어함수의 인자로 할당할 수 있는 원소로 이뤄진 배열을 받는다.
 - 주어진 배열을 차례로 순회하면서 첫 번째 원소는 새로운 배열에 넣고, 다음으로는 연속한 두 원소가 주어진 술어함수의 인자로 할당 될 때 거짓이면 새로운 배열을 만들어 두 번째 원소를 넣고 술어함수가 참이면 기존 배열에 두 번째 원소를 넣어 나열한 결과를 배열로 반환한다.
 
-## 예제
+## 문법
+
 ```
+R.groupWith(fn, list): List
+```
+
+> `fn`: Function for determining whether two given (adjacent) elements should be in the same group
+- `fn`: 주어진 (인접한) 원소들이 같은 그룹이 될 것인지를 판단하는 함수
+
+> `list`: The array to group. Also accepts a string, which will be treated as a list of characters.
+- `list`: 그룹화 할 배열. (배열 대신) 문자열도 받으며, 각각의 문자의 리스트로서 다뤄진다.
+
+> Returns List A list that contains sublists of elements, whose concatenations are equal to the original list.
+- List를 반환한다. 이 리스트는 원소들의 서브리스트를 포함한다. 이 연속은 원본 리스트와 동일하다.
+
+## 표현
+
+```
+((a, a) → Boolean) → [a] → [[a]]
+```
+- `((a, a) → Boolean) →`: 첫 번째 인자로는 동일 종류 인자를 두 개 받아서 참 거짓을 반환하는 술어함수를 받는다.
+- `→ [a] →`: 두 번째 인자는 주어진 술어함수의 두 인자로 할당될 수 있는 종류의 원소로 이뤄진 배열을 받는다.
+- `→ [[a]]`: 반환 값으로 연속된 두 원소가 주어진 술어함수의 인자로 할당될 때 거짓을 반환하거나 첫 번째 원소이면 새로운 배열에 넣고, 참을 반환하는 경우 기존 배열에 넣어 나열하므로 모든 원소가 배열인 배열을 반환한다.
+
+## 예제
+
+```js
 R.groupWith(R.equals, [0, 1, 1, 2, 3, 5, 8, 13, 21])
 //=> [[0], [1, 1], [2], [3], [5], [8], [13], [21]]
 
@@ -35,5 +57,8 @@ R.groupWith(R.eqBy(isVowel), 'aestiou')
 - 술어함수 `(a, b) => a % 2 === b % 2`는 짝수끼리 홀수끼리이면 참 아니면 거짓을 반환하는 함수이다. 0은 첫 번째 원소이므로 새 배열에 넣어서 `[0]`이며 0과 1은 거짓으로 `[1]`이며, 1과 1은 홀수인 참이므로 기존 배열에 추가하여 `[1, 1]`이며, 1과 2는 거짓으로 새 배열인 `[2]`이며, 2와 3은 거짓으로 새 배열인 `[3]`이며, 3과 5는 홀수인 참으로 기존 배열에 추가하여 `[3, 5]`이며, 5와 8은 거짓으로 새 배열 `[8]`이며, 8과 13은 거짓으로 새 배열 `[13]`이며, 13과 21은 홀수인 참으로 기존 배열에 추가하여 `[13, 21]`이 된다. 만들어진 배열들을 나열하면 `[[0], [1, 1], [2], [3, 5], [8], [13, 21]]`이다.
 - `R.test`는 첫 번째 인자로 자바스크립트 정규표현식을 두 번째 인자로 문자열을 입력하여 주어진 정규표현을 만족하는지 확인하는 술어함수이다. `R.eqBy`는 첫 번째 인자로 함수를 받고 두 번째 세번째 인자로 첫 번째에 넣은 함수의 인자로 넣어 평가했을 때 두 값이 일치하는지 확인하는 함수이다. `R.eqBy(isVowel)`는 두 인자를 받아 두 인자가 `isVowel`의 정규식을 만족하는 문자열인지 확인한다. `'aestiou'`는 배열에 상당하므로 `a`는 첫 번째 원소이므로 새 배열 `['a']`, `a`와 `e`는 술어함수를 만족하므로 기존 배열에 추가해 `['a', 'e']`, `e`와 `s`는 술어함수를 만족하지 않으므로 새 배열 `['s']`, `s`와 `t`는 술어함수를 만족하므로 기존 배열 `['s', 't']`, t와 i는 술어함수를 만족하지 않으므로 `[i]`이며, `i`와 `o`는 술어함수를 만족하므로 기존 배열에 추가하여 `[i, o]`, `o`와 `u`는 술어함수를 만족하므로 기존 배열에 추가하여 `[i, o, u]`이다. 그런데 문자열이므로 만들어지는 것도 문자열로 만들어진다. 내부적으로는 배열이 아닌 문자열로 로직이 구성된다. 따라서 결과는 `['ae', 'st', 'iou']`이다.
 
-## Reference
+## References
+
 - https://ramdajs.com/docs/#groupWith
+- https://github.com/ramda/ramda/blob/master/test/groupWith.js
+- https://github.com/ramda/types/blob/develop/types/groupWith.d.ts
