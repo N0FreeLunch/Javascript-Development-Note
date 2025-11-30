@@ -1,7 +1,8 @@
-## has
+# has
 > Returns whether or not an object has an own property with the specified name
 
 ## 표현
+
 ```
 s → {s: x} → Boolean
 ```
@@ -10,11 +11,25 @@ s → {s: x} → Boolean
 - `→ Boolean` 지정한 프로퍼티 명이 주어진 오브젝트에 존재하면 참 아니면 거짓을 반환한다.
 
 ## 설명
+
 - 첫 번째 인자로 프로퍼티명을 받는다.
 - 두 번째 인자로 오브젝트를 받는다.
 - 주어진 오브젝트에서 지정한 이름의 프로퍼티명을 가지고 있다면 참을 반환 아니면 거짓을 반환한다.
 
+## 문법
+
+```
+R.has(prop, obj): Boolean
+```
+> `prop`: The name of the property to check for.
+- `prop`: 체크할 프로퍼티의 이름
+> `obj`: The object to query.
+- `obj`: 쿼리할 오브젝트
+> Returns Boolean Whether the property exists.
+- 불리언을 반환한다. 프로퍼티가 존재하는지 (하지 않는지를 확인하는 불리언)
+
 ## 예제
+
 ```
 const hasName = R.has('name');
 hasName({name: 'alice'});   //=> true
