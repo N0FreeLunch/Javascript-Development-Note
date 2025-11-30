@@ -1,17 +1,11 @@
 # has
+
 > Returns whether or not an object has an own property with the specified name
-
-## 표현
-
-```
-s → {s: x} → Boolean
-```
-- `s →` 첫 번째 인자로 두 번재 인자로 들어오는 오브젝트의 프로퍼티명으로 가능한 종류의 인자를 받는다. `s`는 문자열 형태의 값을 받는다는 의미이다.
-- `→ {s: x} →` 두 번째 인자로 오브젝트를 받는다.
-- `→ Boolean` 지정한 프로퍼티 명이 주어진 오브젝트에 존재하면 참 아니면 거짓을 반환한다.
+- 어떤 오브젝트가 특정한 이름을 갖는 프로퍼티를 가지고 있는지 아닌지를 반환한다.
 
 ## 설명
 
+- 오브젝트에 지정한 이름의 프로퍼티가 존재하는지를 확인한다.
 - 첫 번째 인자로 프로퍼티명을 받는다.
 - 두 번째 인자로 오브젝트를 받는다.
 - 주어진 오브젝트에서 지정한 이름의 프로퍼티명을 가지고 있다면 참을 반환 아니면 거짓을 반환한다.
@@ -27,6 +21,15 @@ R.has(prop, obj): Boolean
 - `obj`: 쿼리할 오브젝트
 > Returns Boolean Whether the property exists.
 - 불리언을 반환한다. 프로퍼티가 존재하는지 (하지 않는지를 확인하는 불리언)
+
+## 표현
+
+```
+s → {s: x} → Boolean
+```
+- `s →`: 첫 번째 인자로 두 번재 인자로 들어오는 오브젝트의 프로퍼티명으로 가능한 종류의 인자를 받는다. `s`는 문자열 형태의 값을 받는다는 의미이다.
+- `→ {s: x} →`: 두 번째 인자로 오브젝트를 받는다.
+- `→ Boolean`: 지정한 프로퍼티 명이 주어진 오브젝트에 존재하면 참 아니면 거짓을 반환한다.
 
 ## 예제
 
@@ -47,5 +50,8 @@ pointHas('z');  //=> false
 - `R.has(R.__, point)`는 첫 번째 인자는 평가된 함수(`pointHas`)의 인자로 받고 두 번째 인자를 미리 `{x: 0, y: 0}`으로 지정한다.
 - `{x: 0, y: 0}` 오브젝트에서 x 프로퍼티명이 있으므로 true, y 프로퍼티명이 있으므로 false, z 프로퍼티명이 없으므로 false이다.
 
-## Reference
+## References
+
 - https://ramdajs.com/docs/#has
+- https://github.com/ramda/ramda/blob/master/test/has.js
+- https://github.com/ramda/types/blob/develop/types/has.d.ts
