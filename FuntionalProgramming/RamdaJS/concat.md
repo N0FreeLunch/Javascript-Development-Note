@@ -26,11 +26,11 @@
 R.concat(firstList: Array, secondList: Array): Array
 ```
 
-- firstList: The first list
+> firstList: The first list
 - firstList: 첫 번째 리스트
-- secondList: The second list
+> secondList: The second list
 - secondList: 두 번째 리스트
-- Returns Array A list consisting of the elements of `firstList` followed by the elements of `secondList`.
+> Returns Array A list consisting of the elements of `firstList` followed by the elements of `secondList`.
 - 배열을 반환한다. `firstList`의 원소에 `secondList`의 원소가 뒤따르는 구성으로 되어 있다.
 
 ## 표현
@@ -51,11 +51,12 @@ String → String → String
 
 ## 예제
 
-```
+```js
 R.concat('ABC', 'DEF'); // 'ABCDEF'
 R.concat([4, 5, 6], [1, 2, 3]); //=> [4, 5, 6, 1, 2, 3]
 R.concat([], []); //=> []
 ```
+
 - `R.concat('ABC', 'DEF')`: 첫 번째 인자로 문자열을 받았으므로 두 번째 인자도 문자열을 받아야 한다. 두 문자열을 `'ABC'`, `'DEF'`을 결합한 결과인 `[4, 5, 6, 1, 2, 3]`를 반환한다.
 - `R.concat([4, 5, 6], [1, 2, 3])`; 첫 번째 인자로 배열을 받았으므로 두 번째 인자로 배열을 받아야 한다. 두 배열의 원소를 나열하면 `4, 5, 6, 1, 2, 3` 이고 배열로 반환하므로 `[4, 5, 6, 1, 2, 3]`를 반환한다.
 - `R.concat([], [])`: 첫 번째 인자로 배열을 받았으므로 두 번째 인자로도 배열을 받아야 한다. 두 배열의 원소를 나열하면 비어있고 이를 배열로 반환하면 `[]` 빈 배열이 반환된다.
